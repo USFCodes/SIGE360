@@ -1,0 +1,262 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÃO DOS TEMAS (LIGHT & DARK)
+   ========================================================================== */
+.light-theme {
+  --bg: #e2e7f4;
+  --color: #0f172a;
+  --dashbg: #e4ecf5;
+  --dashshadow: rgba(163, 177, 198, 0.5);
+  --brandbg: #e4ecf5;
+  --brandtxt: #0284c7;
+  --brand-shadow: 8px 8px 18px rgba(163, 177, 198, 0.6), -8px -8px 18px rgba(255, 255, 255, 0.9);
+  --sub-color: #64748b;
+
+  --nav-bg: #e4ecf5;
+  --nav-color: #64748b;
+  --nav-shadow: 6px 6px 14px rgba(163, 177, 198, 0.5), -6px -6px 14px rgba(255, 255, 255, 0.9);
+  --nav-hover-bg: #e4ecf5;
+  --nav-hover-color: #0284c7;
+  --nav-hover-shadow: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+
+  --logout-bg: #e4ecf5;
+  --logout-color: #dc2626;
+  --logout-shadow: 6px 6px 14px rgba(163, 177, 198, 0.5), -6px -6px 14px rgba(255, 255, 255, 0.9);
+  --logout-hover-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+
+  --themebtn-bg: #e4ecf5;
+  --themebtn-color: #0284c7;
+  --themebtn-shadow: 8px 8px 18px rgba(163, 177, 198, 0.6), -8px -8px 18px rgba(255, 255, 255, 0.9);
+  --themebtn-hover-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme {
+  --bg: #0f172a;
+  --color: #f8fafc;
+  --dashbg: #0f172a;
+  --dashshadow: rgba(0, 0, 0, 0.5);
+  --brandbg: #0f172a;
+  --brandtxt: #38bdf8;
+  --brand-shadow: 8px 8px 18px rgba(0, 0, 0, 0.7), -8px -8px 18px rgba(255, 255, 255, 0.05);
+  --sub-color: #94a3b8;
+
+  --nav-bg: #0f172a;
+  --nav-color: #94a3b8;
+  --nav-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5), -6px -6px 14px rgba(255, 255, 255, 0.04);
+  --nav-hover-bg: #0f172a;
+  --nav-hover-color: #38bdf8;
+  --nav-hover-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.7), inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+
+  --logout-bg: #0f172a;
+  --logout-color: #f87171;
+  --logout-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5), -6px -6px 14px rgba(255, 255, 255, 0.04);
+  --logout-hover-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.7), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+
+  --themebtn-bg: #0f172a;
+  --themebtn-color: #38bdf8;
+  --themebtn-shadow: 8px 8px 18px rgba(0, 0, 0, 0.6), -8px -8px 18px rgba(255, 255, 255, 0.05);
+  --themebtn-hover-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.7), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   ESTRUTURA BASE DA DASHBOARD
+   ========================================================================== */
+.dash-full {
+  display: flex;
+  background-color: var(--bg);
+  color: var(--color);
+  height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.dash-bar {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 20px;
+  background: var(--dashbg);
+  box-shadow: 15px 0 35px var(--dashshadow);
+  transition: all 0.3s ease;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.7rem;
+  margin: 0 0 30px 0;
+  position: relative;
+}
+.brand-icon {
+    height: 50px;
+    width: 50px;
+  background: var(--brandbg);
+  color: var(--brandtxt);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  box-shadow: var(--brand-shadow);
+  transition: all 0.3s ease;
+}
+.sub {
+  font-weight: 600;
+  font-size: 1.7rem;
+  letter-spacing: 0.05em;
+  color: var(--sub-color);
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   NAVEGAÇÃO E ITENS DO MENU
+   ========================================================================== */
+.dash-bar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--nav-bg);
+  color: var(--nav-color);
+  box-shadow: var(--nav-shadow);
+  transition: all 0.25s ease;
+}
+.nav-item.active, .nav-item:hover {
+  background: var(--nav-hover-bg);
+  color: var(--nav-hover-color);
+  box-shadow: var(--nav-hover-shadow);
+}
+
+/* ==========================================================================
+   BOTÃO DE TERMINAR SESSÃO (LOGOUT)
+   ========================================================================== */
+.logout-btn {
+  margin-top: auto;
+  height: 46px;
+  border-radius: 16px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--logout-bg);
+  color: var(--logout-color);
+  box-shadow: var(--logout-shadow);
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  box-shadow: var(--logout-hover-shadow);
+}
+
+/* ==========================================================================
+   BOTÃO DE ALTERNÂNCIA DE TEMA (THEME BTN)
+   ========================================================================== */
+.themeBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  cursor: pointer;
+  background: var(--themebtn-bg);
+  color: var(--themebtn-color);
+  box-shadow: var(--themebtn-shadow);
+  transition: all 0.25s ease;
+}
+
+.themeBtn:hover {
+  box-shadow: var(--themebtn-hover-shadow);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 950px) {
+  .dash-bar {
+    width: 80px;
+    padding: 24px 15px;
+  }
+  .sub, .nav-item span, .logout-btn span {
+    display: none;
+  }
+  .nav-item {
+    justify-content: center;
+    border-radius: 5px;
+    padding: 12px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .dash-full {
+    flex-direction: column;
+  }
+  .dash-bar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 65px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    gap: 12px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  .brand{
+    display: none;
+  }
+  .dash-bar nav {
+    flex-direction: row;
+  }
+  .nav-item {
+    padding: 10px 14px;
+  }
+  .logout-btn {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: auto 0;
+}
+  .themeBtn {
+    bottom: 80px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 380px) {
+    .hide{
+        display: none;
+    }
+}
+@media (max-width: 297px) {
+    .logout-btn{
+        display: none;
+    }
+}

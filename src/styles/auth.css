@@ -1,0 +1,572 @@
+/* ==========================================
+   1. VARIÁVEIS E TEMAS (Light & Dark)
+   ========================================== */
+
+/* ==========================================
+   2. ESTRUTURA GLOBAL E CONTAINER
+   ========================================== */
+
+
+/* ==========================================
+   3. CARTÃO PRINCIPAL (GRID / LAYOUT)
+   ========================================== */
+
+
+/* ==========================================
+   4. PAINEL ESQUERDO (DESKTOP HERO)
+   ========================================== */
+
+/* ==========================================
+   5. PAINEL DIREITO (FORMULÁRIO)
+   ========================================== */
+
+/* ==========================================
+   5. Cadastro completo da escola (Profissional)
+   ========================================== */
+.authCard.authCardFull {
+  display: block;
+  width: min(100%, 1280px);
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 20px;
+}
+
+.desktopFormWrapper.desktopFormWrapperFull {
+  display: block;
+  padding: clamp(24px, 3.6vh, 42px) clamp(36px, 5vw, 72px);
+}
+
+.authCardFull .authBox {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.authCardFull .wizard-header-container {
+  border-bottom: 1px solid var(--auth-input-border);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.authCardFull .wizard-status-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--auth-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 15px;
+}
+
+.authCardFull .wizard-progress-bar {
+  height: 7px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--auth-input-bg);
+}
+
+.authCardFull .wizard-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0b78bd, #36d4d1);
+  box-shadow: 0 0 12px rgba(31, 144, 204, 0.35);
+  transition: width 280ms ease;
+}
+
+.authCardFull .wizard-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.authCardFull .wizard-step-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  color: var(--auth-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.authCardFull .wizard-step-circle {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--auth-input-border);
+  border-radius: 50%;
+  background: var(--auth-input-bg);
+  color: var(--auth-text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.authCardFull .wizard-step-item.active,
+.authCardFull .wizard-step-item.completed {
+  color: var(--auth-blue);
+}
+
+.authCardFull .wizard-step-item.active .wizard-step-circle,
+.authCardFull .wizard-step-item.completed .wizard-step-circle {
+  border-color: var(--auth-blue);
+  background: var(--auth-blue);
+  color: #fff;
+}
+
+.authCardFull .formHeader {
+  margin: 10px 0 20px;
+}
+
+.authCardFull .authTitle {
+  font-size: 22px;
+  margin-bottom: 4px;
+  color: var(--auth-text-main);
+}
+
+.authCardFull .formDescription {
+  font-size: 13px;
+  color: var(--auth-text-muted);
+}
+
+.authCardFull .wizardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.authCardFull .wizardIdentityRow {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(130px, 0.8fr);
+  gap: 18px;
+}
+
+.authCardFull .grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* ==========================================
+   ESTILO PROFISSIONAL FIELDSET + FLOATING LEGEND
+   ========================================== */
+.customFieldset {
+  position: relative;
+  border: 1px solid var(--auth-input-border);
+  border-radius: 10px;
+  padding: 0 14px;
+  margin: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.customFieldset:focus-within, .customFieldset.has-value {
+  border-color: var(--auth-blue);
+  box-shadow: 0 0 0 3px rgba(7, 90, 158, 0.12);
+}
+
+.customLegend {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--auth-text-muted);
+  background: transparent;
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.customFieldset:focus-within .customLegend,
+.customFieldset.has-value .customLegend {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  color: var(--auth-blue);
+  font-weight: 700;
+  background: var(--auth-bg-card);
+}
+
+.authCardFull .authInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--auth-input-text);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  padding-top: 4px;
+}
+
+.inputWithSuffix {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.authCardFull .domainSuffix {
+  flex: 0 0 auto;
+  color: var(--auth-blue);
+  font-size: 13px;
+  font-weight: 700;
+  padding-left: 6px;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DOS SELECTS E DROPDOWNS (SELECTWRAPPER)
+   ========================================== */
+.selectFieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectLabel {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--auth-text-main);
+  margin-left: 2px;
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--auth-input-border);
+  border-radius: 10px;
+  padding: 0 14px;
+  background: var(--auth-input-bg);
+  height: 56px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.selectWrapper:focus-within {
+  border-color: var(--auth-blue);
+  background: var(--auth-bg-card);
+  box-shadow: 0 0 0 3px rgba(7, 90, 158, 0.12);
+}
+
+.authSelect {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--auth-input-text);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 24px;
+}
+
+/* Ícone de seta customizado em SVG para substituir o padrão */
+.selectWrapper::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* ==========================================
+   FEEDBACKS, TEMAS E BOTÕES
+   ========================================== */
+.authCardFull .signupFeedback {
+  margin: 0 0 16px;
+  padding: 11px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.authCardFull .signupFeedback.success {
+  border-color: #86d8b5;
+  background: #effaf4;
+  color: #176b48;
+}
+
+.dark-theme .authCardFull .signupFeedback.success {
+  border-color: #167c58;
+  background: rgba(16, 185, 129, 0.13);
+  color: #86efac;
+}
+
+.authCardFull .grid-cols-2-1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.authCardFull .grid-cols-2-1 > div {
+  padding: 14px;
+  border: 1px solid var(--auth-input-border);
+  border-radius: 10px;
+  background: var(--auth-input-bg);
+  color: var(--auth-text-main);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.authCardFull .grid-cols-2-1 > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(7, 90, 158, 0.1);
+}
+
+.authCardFull .grid-cols-2-1 > div.selected {
+  border: 2px solid var(--auth-blue);
+  background: rgba(7, 90, 158, 0.06);
+}
+
+.authCardFull .form-actions-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.authCardFull .form-actions-group .authButton,
+.authCardFull .form-actions-group .authButton-secondary {
+  flex: 1;
+  min-height: 50px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.authCardFull .authButton-secondary {
+  border: 1px solid var(--auth-input-border);
+  background: var(--auth-input-bg);
+  color: var(--auth-text-main);
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.authCardFull .authButton-secondary:hover:not(:disabled) {
+  border-color: var(--auth-blue);
+  background: rgba(7, 90, 158, 0.06);
+}
+
+.authCardFull .authButton-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.authCardFull .formFooter {
+  margin-top: 20px;
+  padding-top: 12px;
+  font-size: 12px;
+  border-top: 1px solid var(--auth-input-border);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--auth-text-muted);
+}
+
+/* ==========================================
+   6. RESPONSIVIDADE (TABLET E TELEMÓVEL)
+   ========================================== */
+@media (max-width: 840px) {
+  .authCard.authCardFull {
+    width: 100%;
+    max-height: none;
+    border-radius: 16px;
+  }
+
+  .desktopFormWrapper.desktopFormWrapperFull {
+    padding: 24px 20px;
+  }
+
+  .authCardFull .wizardIdentityRow {
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 0.7fr);
+    gap: 12px;
+  }
+
+  .authCardFull .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .desktopFormWrapper.desktopFormWrapperFull {
+    padding: 18px 14px;
+  }
+
+  .authCardFull .wizard-step-label {
+    display: none;
+  }
+
+  .authCardFull .wizard-step-circle {
+    margin: 0 auto;
+  }
+
+  .authCardFull .wizardIdentityRow,
+  .authCardFull .grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .authCardFull .form-actions-group {
+    flex-direction: column-reverse;
+  }
+
+  .authCardFull .form-actions-group .authButton,
+  .authCardFull .form-actions-group .authButton-secondary {
+    width: 100%;
+    min-height: 46px;
+  }
+}
+/* ==========================================
+   6. RESPONSIVIDADE E MEDIA QUERIES
+   ========================================== */
+@media (max-width: 760px) {
+  .authContainer { padding: 22px; }
+  .authCard { grid-template-columns: minmax(0, 1fr); width: min(100%, 500px); min-height: 0; }
+  .desktopHero { min-height: 190px; padding: 28px 30px 24px; }
+  .desktopHero::after { top: auto; right: -72px; bottom: -150px; width: 210px; height: 230px; }
+  .heroContent { max-width: 380px; margin: 0; padding: 0 0 24px; }
+  .heroEyebrow { margin-bottom: 10px; font-size: 9px; }
+  .heroContent h1 { margin-bottom: 6px; font-size: 34px; }
+  .heroHeadline { margin-bottom: 6px; font-size: 14px; }
+  .heroDescription { max-width: 320px; font-size: 11px; line-height: 1.55; }
+  .heroFooter { display: none; }
+  .heroDecorationOne { bottom: -118px; left: -62px; width: 170px; height: 170px; }
+  .heroDecorationTwo { right: 8%; bottom: -20px; width: 92px; height: 92px; }
+  .heroDecorationThree { display: none; }
+  .desktopFormWrapper { padding: 30px; }
+  .formHeader { margin-bottom: 24px; }
+}
+
+@media (max-width: 420px) {
+  .authContainer { padding: 14px; }
+  .authCard { border-radius: 15px; }
+  .desktopHero { min-height: 170px; padding: 22px 22px 18px; }
+  .desktopFormWrapper { padding: 25px 22px; }
+  .authTitle { font-size: 27px; }
+  .authOptions { align-items: flex-start; font-size: 10px; }
+}
+
+/* ==========================================
+   6. RESPONSIVIDADE (TABLET E TELEMÓVEL)
+   ========================================== */
+@media (max-width: 840px) {
+  .authCard.authCardFull {
+    width: 100%;
+    max-height: none;
+    border-radius: 16px;
+  }
+
+  .desktopFormWrapper.desktopFormWrapperFull {
+    padding: 28px 20px;
+  }
+
+  .authCardFull .wizardIdentityRow {
+    grid-template-columns: minmax(0, 1fr) minmax(100px, 0.6fr);
+    gap: 12px;
+  }
+
+  .authCardFull .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .authCardFull .wizard-step-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .authContainer {
+    padding: 12px;
+  }
+
+  .desktopFormWrapper.desktopFormWrapperFull {
+    padding: 20px 14px;
+  }
+
+  .authCardFull .wizard-status-info {
+    font-size: 10px;
+  }
+
+  .authCardFull .wizard-step-label {
+    display: none; /* Oculta o texto das etapas no telemóvel para economizar espaço */
+  }
+
+  .authCardFull .wizard-steps-grid {
+    gap: 6px;
+  }
+
+  .authCardFull .wizard-step-circle {
+    margin: 0 auto;
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 11px !important;
+  }
+
+  .authCardFull .authTitle {
+    font-size: 18px;
+  }
+
+  .authCardFull .wizardIdentityRow,
+  .authCardFull .grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr); /* Alinha todos os campos numa única coluna */
+    gap: 12px;
+  }
+
+  .authCardFull .form-actions-group {
+    flex-direction: column-reverse; /* Coloca o botão principal no topo */
+    gap: 8px;
+  }
+
+  .authCardFull .form-actions-group .authButton,
+  .authCardFull .form-actions-group .authButton-secondary {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+/* ==========================================
+   7. ANIMAÇÕES
+   ========================================== */
+@keyframes authBlueDrift {
+  from { transform: translate3d(-3%, -2%, 0) scale(0.96); }
+  to { transform: translate3d(4%, 3%, 0) scale(1.04); }
+}
+
+@keyframes authCardEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes authOrbFloat {
+  from { transform: translate3d(0, 4px, 0); }
+  to { transform: translate3d(0, -10px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .authContainer::before, 
+  .authContainer::after, 
+  .authCard, 
+  .heroDecoration { animation: none; }
+  .inputWrapper, 
+  .authButton,
+  .wizard-progress-fill,
+  .wizard-step-circle,
+  .grid-cols-2-1 > div,
+  .authButton-secondary { transition: none; }
+}

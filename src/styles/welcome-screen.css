@@ -1,0 +1,221 @@
+/* ========================================================== */
+/* WELCOME SCREEN — FUTURE-SE (ANIMAÇÕES & DESIGN MODERNO)    */
+/* ========================================================== */
+
+.welcome-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #164e85 0%, #0d2e54 65%, #081b33 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: inherit;
+  color: #fff;
+}
+
+/* Efeito de brilho de fundo dinâmico */
+.welcome-glow-bg {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+.welcome-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.welcome-content-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  max-width: 500px;
+}
+
+/* ANIMAÇÃO DO LOGÓTIPO */
+.welcome-logo-box {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.logo-animating {
+  animation: logoEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-stabilized {
+  transform: scale(1) translateY(0);
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(30px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Anel pulsante ao redor do logo */
+.logo-ring-pulse {
+  position: absolute;
+  inset: -12px;
+  border-radius: 24px;
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  animation: ringPulse 2s infinite;
+}
+
+@keyframes ringPulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+
+.logo-img-wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-brand-logo {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* ANIMAÇÃO DOS TEXTOS */
+.welcome-text-box {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.text-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.welcome-badge {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.welcome-text-box h1 {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-text-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0 0 32px 0;
+  max-width: 400px;
+}
+
+/* ANIMAÇÃO DO BOTÃO DE ENTRADA */
+.welcome-actions-box {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.actions-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.actions-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.welcome-btn-enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 24px;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.welcome-btn-enter:hover {
+  background: #f0f9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.25);
+}
+
+.welcome-btn-enter .arrow-icon {
+  transition: transform 0.2s;
+}
+
+.welcome-btn-enter:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.welcome-footer-hint {
+  font-size: 11px;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}

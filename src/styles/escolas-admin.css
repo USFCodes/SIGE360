@@ -1,0 +1,1373 @@
+/* ==========================================================================
+   GESTAO DE ESCOLAS - DESIGN ULTRA-MODERNO & GLASSMORPHISM
+   ========================================================================== */
+
+.escolas-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- 1. CABEÇALHO HERO MODERNO --- */
+.escolas-header-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.escolas-header-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.escolas-hero-text h1 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.escolas-hero-text p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.escolas-hero-actions {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-hero-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.btn-hero-action.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.btn-hero-action.secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.btn-hero-action.primary {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+.btn-hero-action.primary:hover {
+  background: #0369a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+}
+
+/* --- 2. PAINEL DE FILTROS GLASSMORPHISM --- */
+.escolas-filter-card {
+  background: var(--dashbg, rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--light-border-st, rgba(226, 232, 240, 0.8));
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dark-theme .escolas-filter-card {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.filter-search-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.escolas-search-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 46px;
+  transition: all 0.2s ease;
+}
+
+.dark-theme .escolas-search-input-wrapper {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.escolas-search-input-wrapper:focus-within {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+.escolas-search-input-wrapper input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color, #0f172a);
+}
+
+.btn-clear-filters {
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dark-theme .btn-clear-filters {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+.btn-clear-filters:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.filter-selects-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.filter-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-select-group label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.filter-select-group select {
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color, #0f172a);
+  outline: none;
+  cursor: pointer;
+}
+
+.dark-theme .filter-select-group select {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+/* --- 3. TABELA PRINCIPAL E CARTÃO --- */
+.escolas-table-card {
+  background: var(--dashbg, #ffffff);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid var(--light-border-st, rgba(226, 232, 240, 0.8));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dark-theme .escolas-table-card {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.table-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 14px;
+}
+
+.dark-theme .table-top-bar {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.table-top-bar h2 {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color, #0f172a);
+}
+
+.counter-pill {
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.escolas-custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  font-size: 12px;
+}
+
+.escolas-custom-table th {
+  padding: 10px 16px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #64748b;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.escolas-custom-table tbody tr {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.dark-theme .escolas-custom-table tbody tr {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.escolas-custom-table tbody tr:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dark-theme .escolas-custom-table tbody tr:hover {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.escolas-custom-table td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+.escolas-custom-table td:first-child { border-radius: 14px 0 0 14px; }
+.escolas-custom-table td:last-child { border-radius: 0 14px 14px 0; }
+
+/* Célula de Escola com Avatar/Sigla */
+.escola-info-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.escola-avatar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.escola-info-cell strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color, #0f172a);
+}
+
+.escola-info-cell span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.cell-details strong {
+  display: block;
+  font-weight: 700;
+  color: var(--color, #0f172a);
+}
+
+.cell-details span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Badges e Botões de Ação */
+.badge-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.badge-status-pill.ativo {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.badge-status-pill.desativado {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.btn-tb-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color, #0f172a);
+}
+
+.dark-theme .btn-tb-act {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+}
+
+.btn-tb-act.view:hover { background: #0284c7; color: #ffffff; }
+.btn-tb-act.edit:hover { background: #eab308; color: #ffffff; }
+.btn-tb-act.delete:hover { background: #ef4444; color: #ffffff; }
+
+@media (max-width: 900px) {
+  .filter-selects-row { grid-template-columns: 1fr; }
+  .escolas-header-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+/* ==========================================================================
+   ESTILOS DO MODAL POP-UP (OVERLAY E POSICIONAMENTO CENTRALIZADO)
+   ========================================================================== */
+
+/* Fundo escurecido fixo sobre toda a tela */
+.modal-admin-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Caixa centralizada do Modal */
+.modal-admin-box {
+  background: var(--dashbg, #ffffff);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: modalFadeIn 0.25s ease-out;
+  box-sizing: border-box;
+}
+
+.dark-theme .modal-admin-box {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Cabeçalho do Modal */
+.modal-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 16px;
+}
+
+.dark-theme .modal-admin-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.modal-title-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-avatar-square {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.modal-title-user h2 {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color, #0f172a);
+}
+
+.modal-title-user p {
+  font-size: 11px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.btn-modal-close {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color, #0f172a);
+  border: none;
+  font-size: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.dark-theme .btn-modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.btn-modal-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* Corpo e Grids */
+.modal-admin-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modal-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-section {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark-theme .modal-section {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.modal-section h4 {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-section p {
+  font-size: 12px;
+  margin: 6px 0;
+  color: var(--color, #1e293b);
+}
+
+/* Rodapé de Ações */
+.modal-danger-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 16px;
+}
+
+.dark-theme .modal-danger-actions {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-admin-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-admin-act.act-delete {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.btn-admin-act.act-delete:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .modal-grid-2 { grid-template-columns: 1fr; }
+}
+
+
+/* ------------------------------------ */
+/* ==========================================================================
+   MELHORIAS NO MODAL DE VISUALIZAÇÃO E ESTILOS DE IMPRESSÃO
+   ========================================================================== */
+
+/* Estilo interno do Modal de Visualização */
+.escola-ficha-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ficha-header-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(2, 132, 199, 0.06);
+  border-radius: 12px;
+  border: 1px solid rgba(2, 132, 199, 0.15);
+}
+
+.ficha-header-badge .badge-status-pill {
+  font-size: 11px;
+  padding: 6px 14px;
+}
+
+/* Grids do Modal */
+.ficha-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ficha-info-box {
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dark-theme .ficha-info-box {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ficha-info-box span {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+.ficha-info-box strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color, #0f172a);
+}
+
+/* Rodapé Ações no Modal */
+.modal-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 6px;
+}
+
+.dark-theme .modal-footer-actions {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Esconder elementos de impressão na tela */
+.print-only-header,
+.print-only-footer {
+  display: none;
+}
+
+/* ==========================================================================
+   REGRAS DE IMPRESSÃO OFICIAL DA FICHA DA ESCOLA (@media print)
+   ========================================================================== */
+@media print {
+  /* Ocultar elementos da interface que não devem sair no papel */
+  body:has(#printable-escola-ficha) * {
+    visibility: hidden;
+  }
+
+  /* Exibir exclusivamente o conteúdo do modal imprimível */
+  #printable-escola-ficha,
+  #printable-escola-ficha * {
+    visibility: visible;
+  }
+
+  /* Reset de posicionamento para ocupar a folha A4 completa */
+  .modal-admin-overlay {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  #printable-escola-ficha {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 20mm !important;
+  }
+
+  /* Ocultar botões de fechar e ações ao imprimir */
+  .btn-modal-close,
+  .modal-footer-actions,
+  .escolas-hero-actions {
+    display: none !important;
+  }
+
+  /* Cabeçalho de Impressão Oficial Timbrado */
+  .print-only-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .print-only-header h1 {
+    font-size: 18pt;
+    font-weight: 800;
+    color: #0284c7;
+    margin: 0;
+  }
+
+  .print-only-header p {
+    font-size: 9pt;
+    color: #475569;
+    margin: 2px 0 0 0;
+  }
+
+  /* Adaptação dos blocos para fundo branco de impressão */
+  .ficha-info-box {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  .ficha-info-box strong {
+    color: #000000 !important;
+  }
+
+  /* Espaço para Assinaturas e Carimbos no fim do papel */
+  .print-only-footer {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 20px;
+  }
+
+  .print-signature-box {
+    width: 42%;
+    text-align: center;
+    border-top: 1px solid #000000;
+    padding-top: 8px;
+    font-size: 10pt;
+    font-weight: 700;
+  }
+}
+
+
+
+/* ------------------------------------ */
+/* ==========================================================================
+   MELHORIAS NO BOTÃO E FICHA PROFISSIONAL DE IMPRESSÃO
+   ========================================================================== */
+
+/* Estilização do Botão de Impressão e Rodapé de Ações */
+.modal-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark-theme .modal-footer-actions {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-print-official {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-print-official:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
+}
+
+.btn-print-official:active {
+  transform: translateY(0);
+}
+
+/* Ocultar elementos exclusivos de impressão na tela */
+.print-only-header,
+.print-only-footer,
+.print-only-watermark {
+  display: none;
+}
+
+/* ==========================================================================
+   MODELO DE IMPRESSÃO PROFISSIONAL (@media print)
+   ========================================================================== */
+@media print {
+  /* Oculta toda a interface do sistema */
+  body:has(#printable-escola-ficha, #printable-funcionario-ficha) * {
+    visibility: hidden;
+  }
+
+  /* Exibe unicamente a ficha imprimível */
+  #printable-escola-ficha,
+  #printable-escola-ficha *,
+  #printable-funcionario-ficha,
+  #printable-funcionario-ficha * {
+    visibility: visible;
+  }
+
+  .modal-admin-overlay {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  #printable-escola-ficha {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 15mm 20mm !important;
+  }
+
+  #printable-funcionario-ficha {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 15mm 20mm !important;
+  }
+
+  #printable-funcionario-ficha > .modal-admin-header,
+  .funcionario-print-actions {
+    display: none !important;
+  }
+
+  .funcionario-print-content {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .funcionario-print-title {
+    display: block !important;
+    margin-bottom: 24px !important;
+    padding-bottom: 14px !important;
+    border-bottom: 3px solid #0284c7 !important;
+  }
+
+  .funcionario-print-title h1 {
+    margin: 0 !important;
+    color: #0284c7 !important;
+    font-size: 20pt !important;
+  }
+
+  .funcionario-print-title p {
+    margin: 4px 0 0 !important;
+    color: #475569 !important;
+  }
+
+  .funcionario-print-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .funcionario-print-grid > div {
+    padding: 10px 12px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    break-inside: avoid;
+  }
+
+  .funcionario-print-grid span,
+  .funcionario-print-grid strong {
+    display: block !important;
+  }
+
+  .funcionario-print-grid span {
+    margin-bottom: 4px !important;
+    color: #475569 !important;
+    font-size: 9pt !important;
+  }
+
+  .funcionario-print-grid strong {
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* Oculta botões e elementos interativos ao imprimir */
+  .btn-modal-close,
+  .modal-footer-actions,
+  .ficha-header-badge {
+    display: none !important;
+  }
+
+  .funcionario-print {
+    width: min(720px, calc(100vw - 32px));
+  }
+
+  .funcionario-print-title {
+    display: none;
+  }
+
+  .funcionario-print-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .funcionario-print-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .funcionario-print-grid span {
+    color: #64748b;
+    font-size: 12px;
+  }
+
+  .funcionario-print-grid strong {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .funcionario-print-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Cabeçalho Oficial Timbrado para Documento em Papel */
+  .print-only-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #0284c7;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .print-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .print-header-brand h1 {
+    font-size: 18pt;
+    font-weight: 900;
+    color: #0284c7;
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .print-header-brand p {
+    font-size: 9pt;
+    color: #475569;
+    margin: 2px 0 0 0;
+    font-weight: 600;
+  }
+
+  .ficha-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .ficha-info-box {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+  }
+
+  .ficha-info-box span {
+    color: #475569 !important;
+    font-size: 8pt !important;
+  }
+
+  .ficha-info-box strong {
+    color: #0f172a !important;
+    font-size: 10pt !important;
+  }
+
+  /* Rodapé de Validação Institucional com Assinaturas */
+  .print-only-footer {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding-top: 20px;
+  }
+
+  .print-signature-box {
+    width: 44%;
+    text-align: center;
+    border-top: 1.5px solid #0f172a;
+    padding-top: 8px;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+}
+
+
+
+
+
+
+
+/* ========================================================== */
+/* ESTILOS DEDICADOS - GESTÃO DE ESCOLAS (FUTURE-SE)          */
+/* ========================================================== */
+
+.escolas-filter-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.filter-search-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.escolas-search-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 14px;
+}
+
+.escolas-search-input-wrapper input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 14px;
+  outline: none;
+  color: #1e293b;
+}
+
+.btn-clear-filters {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filter-selects-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.filter-select-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.filter-select-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+}
+
+.escolas-table-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.table-top-bar {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.table-top-bar h2 {
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 700;
+  margin: 0;
+}
+
+.counter-pill {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.escolas-custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.escolas-custom-table th {
+  background: #f8fafc;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.escolas-custom-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.escola-info-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.escola-avatar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.escola-info-cell strong {
+  display: block;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.escola-info-cell span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.cell-details strong {
+  display: block;
+  color: #1e293b;
+}
+
+.cell-details span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.badge-status-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.badge-status-pill.ativo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-status-pill.desativado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.btn-tb-act {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-tb-act.view {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.btn-tb-act.edit {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+/* Campos e Inputs Globais dos Modais */
+.ce-field-group {
+  margin-bottom: 14px;
+}
+
+.ce-field-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 5px;
+}
+
+.ce-input, .ce-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+}
+
+.modal-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ce-btn-back {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ce-btn-submit {
+  background: #0284c7;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+

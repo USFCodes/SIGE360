@@ -1,0 +1,321 @@
+.tc-page {
+    display: grid;
+    max-width: 1280px;
+    gap: 18px;
+    margin: 0 auto;
+    padding: 24px;
+    color: #172033;
+    background: #f4f7fb;
+    border-radius: 14px;
+}
+
+.tc-header,
+.tc-section-heading,
+.tc-info-item-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.tc-header {
+    padding: 18px 20px;
+    border: 1px solid #e1e8f0;
+    border-left: 4px solid #1e3a8a;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.tc-kicker {
+    color: #64748b;
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.tc-header h1 {
+    margin: 4px 0;
+    color: #172554;
+    font-size: 1.35rem;
+    font-weight: 750;
+}
+
+.tc-header p,
+.tc-section-heading p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: .8rem;
+}
+
+.tc-back-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    color: #1e3a8a;
+    font-size: .8rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tc-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e1e8f0;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, .035);
+}
+
+.tc-section-heading {
+    justify-content: flex-start;
+    margin-bottom: 18px;
+}
+
+.tc-section-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 9px;
+    color: #1e3a8a;
+    background: #edf2ff;
+    font-size: 1rem;
+}
+
+.tc-section-heading h2 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1rem;
+    font-weight: 750;
+}
+
+.tc-section-heading p { font-size: .74rem; }
+
+.tc-password-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    gap: 12px;
+}
+
+.tc-password-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 6px;
+    color: #475569;
+    font-size: .72rem;
+    font-weight: 700;
+}
+
+.tc-password-field input {
+    width: 100%;
+    min-height: 39px;
+    padding: 8px 10px;
+    border: 1px solid #d5deea;
+    border-radius: 7px;
+    color: #1e293b;
+    background: #fff;
+    font: inherit;
+}
+
+.tc-password-field input:focus {
+    border-color: #5472b5;
+    outline: 3px solid rgba(84, 114, 181, .13);
+}
+
+.tc-primary-button,
+.tc-secondary-button {
+    display: inline-flex;
+    min-height: 39px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid #1e3a8a;
+    border-radius: 7px;
+    color: #fff;
+    background: #1e3a8a;
+    font-size: .75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tc-primary-button:disabled {
+    cursor: wait;
+    opacity: .6;
+}
+
+.tc-secondary-button {
+    min-height: 34px;
+    color: #1e3a8a;
+    background: #fff;
+}
+
+.tc-feedback {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: .8rem;
+}
+
+.tc-feedback.sucesso { color: #166534; background: #dcfce7; }
+.tc-feedback.erro { color: #991b1b; background: #fee2e2; }
+
+.tc-state-message {
+    margin: 0;
+    padding: 18px;
+    color: #64748b;
+    border: 1px dashed #d5deea;
+    border-radius: 8px;
+    font-size: .78rem;
+    text-align: center;
+}
+
+.tc-state-error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: #991b1b;
+    background: #fff8f8;
+    text-align: left;
+}
+
+.tc-info-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.tc-info-item {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #e4eaf1;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.tc-info-item.inactive { background: #f8fafc; }
+
+.tc-info-item-heading {
+    align-items: flex-start;
+    margin-bottom: 13px;
+}
+
+.tc-info-category {
+    color: #64748b;
+    font-size: .61rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.tc-info-item-heading h3 {
+    margin: 3px 0 0;
+    color: #1e293b;
+    font-size: .87rem;
+    overflow-wrap: anywhere;
+}
+
+.tc-info-status {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border-radius: 999px;
+    color: #64748b;
+    background: #eef2f7;
+    font-size: .62rem;
+    font-weight: 750;
+}
+
+.tc-info-status.active { color: #166534; background: #dcfce7; }
+
+.tc-info-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    padding: 12px 0;
+    border-top: 1px solid #edf1f5;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.tc-info-detail { min-width: 0; }
+
+.tc-info-detail span {
+    display: block;
+    margin-bottom: 4px;
+    color: #78869a;
+    font-size: .62rem;
+}
+
+.tc-info-detail strong {
+    display: block;
+    color: #263b63;
+    font-size: .74rem;
+    overflow-wrap: anywhere;
+}
+
+.tc-polo-prices {
+    padding: 11px 0;
+    border-top: 1px solid #edf1f5;
+}
+
+.tc-polo-prices h4 {
+    margin: 0 0 8px;
+    color: #475569;
+    font-size: .68rem;
+}
+
+.tc-polo-price-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid #f1f4f7;
+    color: #64748b;
+    font-size: .67rem;
+}
+
+.tc-polo-price-row strong {
+    color: #087c62;
+    font-size: .7rem;
+    white-space: nowrap;
+}
+
+.tc-polo-prices .tc-muted {
+    margin: 0;
+    color: #78869a;
+    font-size: .69rem;
+}
+
+.tc-info-meta {
+    display: grid;
+    gap: 5px;
+    margin-top: 10px;
+    color: #64748b;
+    font-size: .65rem;
+    line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+    .tc-info-list { grid-template-columns: 1fr; }
+    .tc-password-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+    .tc-page { gap: 13px; padding: 14px; }
+    .tc-header { align-items: flex-start; flex-direction: column; padding: 15px; }
+    .tc-header h1 { font-size: 1.15rem; }
+    .tc-card { padding: 15px; }
+    .tc-password-form { grid-template-columns: 1fr; }
+    .tc-password-form .tc-primary-button { width: 100%; }
+    .tc-info-details { grid-template-columns: 1fr 1fr; }
+    .tc-polo-price-row { grid-template-columns: 1fr auto; }
+    .tc-polo-price-row span:nth-child(2) { grid-row: 2; }
+    .tc-polo-price-row strong { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+    .tc-state-error { align-items: flex-start; flex-direction: column; }
+}

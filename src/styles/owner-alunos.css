@@ -1,0 +1,608 @@
+.owner-alunos-page {
+  --owner-accent: #0284c7;
+  --owner-accent-hover: #0369a1;
+  --owner-text: #0f172a;
+  --owner-muted: #64748b;
+  --owner-border: #e2e8f0;
+  --owner-surface-muted: #f8fafc;
+  color: var(--owner-text);
+  gap: 1.25rem;
+}
+
+.owner-alunos-page .import-header-card,
+.owner-alunos-page .school-selector-card,
+.owner-alunos-page .manual-entry-card {
+  background: #fff;
+  border: 1px solid var(--owner-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.owner-alunos-page .import-header-card,
+.owner-alunos-page .manual-entry-card {
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.owner-alunos-page .import-header-top {
+  align-items: center;
+}
+
+.owner-alunos-page .import-title-group h1,
+.owner-alunos-page .manual-entry-card h2 {
+  color: var(--owner-text);
+}
+
+.owner-alunos-page .import-title-group h1 {
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+}
+
+.owner-alunos-page .import-title-group p,
+.owner-alunos-page .manual-entry-card > p,
+.owner-alunos-page .import-school-info span,
+.owner-alunos-page .import-school-info small {
+  color: var(--owner-muted);
+}
+
+.owner-alunos-page .btn-download-template,
+.owner-alunos-page .btn-submit-all {
+  border: 0;
+  border-radius: 8px;
+  background: var(--owner-accent);
+  box-shadow: none;
+  color: #fff;
+  font-weight: 700;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.owner-alunos-page .btn-download-template:hover,
+.owner-alunos-page .btn-submit-all:hover:not(:disabled) {
+  background: var(--owner-accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.owner-alunos-page :is(.btn-download-template, .btn-submit-all):disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.owner-alunos-page .import-tabs-nav {
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--owner-border);
+  padding-bottom: 0;
+}
+
+.owner-alunos-page .tab-btn {
+  border-radius: 8px 8px 0 0;
+  padding: 0.75rem 1rem;
+}
+
+.owner-alunos-page .tab-btn.active {
+  background: transparent;
+  box-shadow: inset 0 -2px 0 var(--owner-accent);
+  color: var(--owner-accent);
+}
+
+.owner-alunos-page .school-selector-card {
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.owner-alunos-page .form-select-group label {
+  color: #475569;
+  font-size: 0.6875rem;
+}
+
+.owner-alunos-page :is(.select-clay, .table-input) {
+  min-height: 42px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
+  color: #1e293b;
+  font-size: 0.8125rem;
+}
+
+.owner-alunos-page :is(.select-clay, .table-input):focus {
+  border-color: var(--owner-accent);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.owner-alunos-page .import-school-info {
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+}
+
+.owner-alunos-page .import-school-info strong {
+  font-size: 0.9375rem;
+}
+
+.owner-alunos-page .import-message {
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  padding: 0.75rem 1rem;
+}
+
+.owner-alunos-page .import-message-error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.owner-alunos-page .import-message-success {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.owner-alunos-page .dropzone-card {
+  border: 1px dashed #93c5fd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
+  padding: 2.5rem 1.5rem;
+}
+
+.owner-alunos-page .dropzone-card:hover,
+.owner-alunos-page .dropzone-card.dragging {
+  border-color: var(--owner-accent);
+  background: #f0f9ff;
+}
+
+.owner-alunos-page .dropzone-text h3 {
+  color: var(--owner-text);
+}
+
+.owner-alunos-page .dropzone-text p {
+  color: var(--owner-muted);
+}
+
+.owner-alunos-page .dropzone-text label {
+  color: var(--owner-accent);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.owner-alunos-page .import-review-card {
+  margin-top: 1.25rem;
+}
+
+.owner-alunos-page .table-responsive {
+  border: 1px solid var(--owner-border);
+  border-radius: 8px;
+}
+
+.owner-alunos-page .clay-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.owner-alunos-page .clay-table th {
+  background: var(--owner-surface-muted);
+  color: #475569;
+}
+
+.owner-alunos-page .clay-table td {
+  border-top: 1px solid var(--owner-border);
+  background: #fff;
+  color: #334155;
+  padding: 0.75rem 1rem;
+}
+
+.owner-alunos-page .clay-table tr td:first-child,
+.owner-alunos-page .clay-table tr td:last-child {
+  border-radius: 0;
+}
+
+.owner-alunos-page .clay-table tbody tr:hover td {
+  background: #f8fafc;
+}
+
+.owner-alunos-page .btn-remove-row {
+  color: #dc2626;
+}
+
+.owner-alunos-page .import-progress {
+  margin: 0.75rem 0;
+}
+
+.owner-alunos-page .progress-bar-track {
+  height: 10px;
+  background: #e2e8f0;
+  box-shadow: none;
+}
+
+.owner-alunos-page .progress-bar-fill {
+  background: var(--owner-accent);
+}
+
+.owner-alunos-page .import-progress p {
+  color: var(--owner-muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.owner-alunos-page .preview-list-box {
+  border: 1px solid var(--owner-border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.owner-alunos-page .preview-item {
+  gap: 1rem;
+}
+
+.owner-alunos-page .preview-name {
+  color: var(--owner-text);
+}
+
+.owner-alunos-page .preview-sub {
+  color: var(--owner-muted);
+}
+
+.owner-alunos-page .modal-actions {
+  margin-top: 0.25rem;
+}
+
+.owner-alunos-page .btn-modal-cancel,
+.owner-alunos-page .btn-modal-confirm {
+  border: 1px solid var(--owner-border);
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.owner-alunos-page .btn-modal-cancel {
+  background: #fff;
+  color: #475569;
+}
+
+.owner-alunos-page .btn-modal-cancel:hover:not(:disabled) {
+  background: var(--owner-surface-muted);
+}
+
+.owner-alunos-page .btn-modal-confirm {
+  background: var(--owner-accent);
+  color: #fff;
+}
+
+.owner-alunos-page .btn-modal-confirm:hover:not(:disabled) {
+  background: var(--owner-accent-hover);
+}
+
+.owner-alunos-page .btn-modal-confirm:disabled,
+.owner-alunos-page .btn-modal-cancel:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.owner-alunos-page .manual-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.owner-alunos-page .manual-photo-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.owner-alunos-page .manual-photo-control input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.owner-alunos-page .manual-photo-control small {
+  color: var(--owner-muted);
+  font-size: 0.6875rem;
+}
+
+.owner-alunos-page .manual-photo-preview {
+  width: 104px;
+  height: 104px;
+  border: 1px solid var(--owner-border);
+  border-radius: 10px;
+  background: var(--owner-surface-muted);
+  object-fit: cover;
+}
+
+.owner-alunos-page .manual-student-thumbnail {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--owner-border);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.owner-alunos-page .manual-checkbox-control {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 0.625rem;
+  color: #334155;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.owner-alunos-page .manual-checkbox-control input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--owner-accent);
+  cursor: pointer;
+}
+
+.owner-alunos-page .manual-list-heading,
+.owner-alunos-page .manual-student-row-heading,
+.owner-alunos-page .manual-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.owner-alunos-page .manual-list-heading h2 {
+  margin: 0;
+}
+
+.owner-alunos-page .manual-list-heading p {
+  margin-top: 0.35rem;
+  color: var(--owner-muted);
+  font-size: 0.8125rem;
+}
+
+.owner-alunos-page .manual-row-count {
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: var(--owner-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+}
+
+.owner-alunos-page .manual-student-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--owner-border);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1.25rem;
+}
+
+.owner-alunos-page .manual-student-row-heading h3 {
+  margin: 0;
+  color: var(--owner-text);
+  font-size: 0.9375rem;
+}
+
+.owner-alunos-page .manual-remove-student,
+.owner-alunos-page .btn-add-student-row {
+  border: 1px solid var(--owner-border);
+  border-radius: 8px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.625rem 0.875rem;
+}
+
+.owner-alunos-page .manual-remove-student {
+  color: #b91c1c;
+}
+
+.owner-alunos-page .manual-remove-student:hover:not(:disabled),
+.owner-alunos-page .btn-add-student-row:hover:not(:disabled) {
+  background: var(--owner-surface-muted);
+}
+
+.owner-alunos-page .btn-add-student-row:disabled,
+.owner-alunos-page .manual-remove-student:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.owner-alunos-page .manual-list-actions {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.owner-alunos-page .manual-list-actions .btn-submit-all {
+  width: auto;
+  margin-top: 0;
+  padding: 0.75rem 1rem;
+}
+
+.owner-alunos-page .owner-students-card,
+.owner-alunos-page .owner-student-edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.owner-alunos-page .owner-student-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  border: 1px solid var(--owner-border);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1rem;
+}
+
+.owner-alunos-page .owner-student-group-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.owner-alunos-page .owner-student-group-heading h3 {
+  margin: 0;
+  color: var(--owner-text);
+  font-size: 1rem;
+}
+
+.owner-alunos-page .owner-student-group-heading p {
+  margin: 0.25rem 0 0;
+  color: var(--owner-muted);
+  font-size: 0.875rem;
+}
+
+.owner-alunos-page .owner-student-group-count {
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--owner-surface-muted);
+  color: var(--owner-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.375rem 0.625rem;
+}
+
+.owner-alunos-page .owner-students-search {
+  max-width: 480px;
+}
+
+.owner-alunos-page .owner-students-empty {
+  margin: 0;
+  color: var(--owner-muted);
+  font-size: 0.875rem;
+}
+
+.owner-alunos-page .owner-students-table td:last-child {
+  min-width: 220px;
+}
+
+.owner-alunos-page .owner-student-move-actions,
+.owner-alunos-page .owner-student-row-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.owner-alunos-page .owner-student-move-actions {
+  justify-content: space-between;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  background: #f0f9ff;
+  color: #075985;
+  padding: 0.75rem 1rem;
+}
+
+.owner-alunos-page .owner-student-move-actions .btn-modal-confirm {
+  width: auto;
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+}
+
+.owner-alunos-page .owner-student-select-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #075985;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.owner-alunos-page .owner-students-table input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--owner-accent);
+}
+
+.owner-alunos-page .owner-student-grade-lock {
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 0.875rem;
+  padding: 0.875rem 1rem;
+}
+
+.owner-alunos-page .owner-edit-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--owner-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.owner-alunos-page .owner-edit-section h3,
+.owner-alunos-page .owner-edit-guardian h4 {
+  margin: 0;
+  color: var(--owner-text);
+}
+
+.owner-alunos-page .owner-edit-guardian {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--owner-border);
+  padding-top: 1rem;
+}
+
+.owner-alunos-page .owner-edit-photo label {
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .owner-alunos-page .import-header-card,
+  .owner-alunos-page .manual-entry-card {
+    padding: 1rem;
+  }
+
+  .owner-alunos-page .import-tabs-nav {
+    overflow-x: auto;
+  }
+
+  .owner-alunos-page .tab-btn {
+    flex-shrink: 0;
+    padding-inline: 0.75rem;
+  }
+
+  .owner-alunos-page .modal-actions {
+    flex-direction: column;
+  }
+
+  .owner-alunos-page .manual-list-heading,
+  .owner-alunos-page .manual-list-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .owner-alunos-page .manual-list-actions .btn-submit-all {
+    width: 100%;
+  }
+
+  .owner-alunos-page .owner-students-card .manual-list-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .owner-alunos-page .owner-student-move-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .owner-alunos-page .owner-student-group-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .owner-alunos-page .owner-student-move-actions .btn-modal-confirm {
+    width: 100%;
+  }
+}

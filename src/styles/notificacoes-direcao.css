@@ -1,0 +1,229 @@
+.nd-container {
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 16px;
+    font-family: inherit;
+    color: #0f172a;
+}
+
+.nd-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.nd-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #0284c7;
+    letter-spacing: 0.5px;
+}
+
+.nd-header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 4px 0;
+}
+
+.nd-header p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+.nd-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nd-timestamp {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #64748b;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.nd-btn-refresh {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #0284c7;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.nd-btn-refresh svg.spin {
+    animation: nd-spin 1s linear infinite;
+}
+
+@keyframes nd-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.nd-filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+
+.nd-filter-tabs button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #fff;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.nd-filter-tabs button.active {
+    background: #0f172a;
+    color: #fff;
+}
+
+/* TIMELINE CARD */
+.nd-timeline-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.nd-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+.nd-timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 19px;
+    width: 2px;
+    background: #e2e8f0;
+}
+
+.nd-timeline-item {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.nd-timeline-item:hover {
+    background: #f8fafc;
+}
+
+.nd-timeline-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.nd-timeline-item.sucesso .nd-timeline-icon-box { background: #dcfce7; color: #166534; }
+.nd-timeline-item.alerta .nd-timeline-icon-box { background: #fee2e2; color: #b91c1c; }
+.nd-timeline-item.pendente .nd-timeline-icon-box { background: #fef9c3; color: #854d0e; }
+.nd-timeline-item.config .nd-timeline-icon-box { background: #e0f2fe; color: #0284c7; }
+
+.nd-timeline-content {
+    flex: 1;
+}
+
+.nd-timeline-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nd-timeline-top h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.nd-date {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.nd-timeline-content p {
+    font-size: 13px;
+    color: #334155;
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.nd-tag-box {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.nd-val {
+    color: #166534;
+    font-weight: 700;
+}
+
+.nd-loading, .nd-empty {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.nd-error {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.nd-empty svg {
+    color: #cbd5e1;
+    margin-bottom: 10px;
+}

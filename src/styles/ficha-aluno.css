@@ -1,0 +1,695 @@
+/* ========================================================== */
+/* ESTILOS DA FICHA ACADÉMICA / CADERNETA INDIVIDUAL DO ALUNO */
+/* ========================================================== */
+
+.fa-page-wrapper {
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.fa-loading-container, .fa-error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 16px;
+    font-size: 15px;
+    color: #475569;
+}
+
+.fa-actions-bar {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-btn-voltar, .fa-btn-imprimir {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    background: #475569;
+    transition: opacity 0.2s;
+}
+
+.fa-btn-voltar:hover, .fa-btn-imprimir:hover {
+    opacity: 0.9;
+}
+
+/* FOLHA LETTERHEAD PRINCIPAL */
+.fa-letterhead-sheet {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid #e2e8f0;
+}
+
+/* CABEÇALHO */
+.fa-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.fa-escola-logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.fa-escola-logo-placeholder {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.fa-header-info-side {
+    flex: 1;
+    text-align: center;
+}
+
+.fa-escola-nome {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    margin: 0 0 4px 0;
+}
+
+.fa-escola-motto {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0 0 4px 0;
+    font-weight: 500;
+}
+
+.fa-escola-detalhes {
+    font-size: 11px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.fa-header-badge-side {
+    text-align: right;
+}
+
+.fa-doc-titulo-badge {
+    background: #0f172a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+.fa-doc-data {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.fa-divider-primary {
+    height: 4px;
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/* IDENTIFICAÇÃO */
+.fa-section-identificacao {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+    gap: 16px;
+    background: #f8fafc;
+    padding: 16px 20px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 30px;
+}
+
+.fa-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fa-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.5px;
+}
+
+.fa-value-destaque {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.fa-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.fa-subtext {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* TABELA DE NOTAS */
+.fa-section-tabela {
+    margin-bottom: 30px;
+}
+
+.fa-section-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #334155;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.fa-tabela-notas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.fa-tabela-notas th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 2px solid #cbd5e1;
+    text-align: center;
+}
+
+.fa-tabela-notas th:first-child {
+    text-align: left;
+}
+
+.fa-tabela-notas td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: center;
+    color: #334155;
+}
+
+.fa-td-disciplina {
+    text-align: left !important;
+}
+
+.fa-td-mac {
+    background: #f8fafc;
+    font-weight: 600;
+}
+
+.fa-td-mf {
+    background: #edf2f7;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* SEÇÃO INFERIOR */
+.fa-section-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 25px;
+}
+
+.fa-sub-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #334155;
+    margin-bottom: 12px;
+}
+
+.fa-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.fa-stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fa-stat-wide {
+    grid-column: span 2;
+}
+
+.fa-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.fa-stat-val {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 2px;
+}
+
+.fa-parecer-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #334155;
+    min-height: 80px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.fa-form-extras {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fa-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    gap: 10px;
+}
+
+.fa-form-extras label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.fa-form-extras input, .fa-form-extras select, .fa-form-extras textarea {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 12px;
+}
+
+.fa-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.fa-btn-salvar {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 11px;
+    border: none;
+    cursor: pointer;
+}
+
+.fa-success-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #166534;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ASSINATURAS */
+.fa-assinaturas-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.fa-assinatura-linha {
+    width: 45%;
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.fa-linha-risco {
+    border-top: 1px solid #94a3b8;
+    margin-bottom: 6px;
+}
+
+.fa-footer-print {
+    display: none;
+}
+
+/* ========================================================== */
+/* REGRAS DE IMPRESSÃO (PRINT MEDIA)                          */
+/* ========================================================== */
+@media print {
+    body.fa-print-caderneta {
+        background: #ffffff !important;
+    }
+
+    body.fa-print-caderneta * {
+        visibility: hidden !important;
+    }
+
+    body.fa-print-caderneta .admin-layout {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    body.fa-print-caderneta .admin-bar,
+    body.fa-print-caderneta .teacher-welcome-panel,
+    body.fa-print-caderneta .fa-actions-bar,
+    body.fa-print-caderneta .fa-footer-print {
+        display: none !important;
+    }
+
+    body.fa-print-caderneta .admin-guard {
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    body.fa-print-caderneta .admin-content,
+    body.fa-print-caderneta .teacher-dashboard-shell,
+    body.fa-print-caderneta .fa-page-wrapper {
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    body.fa-print-caderneta .fa-letterhead-sheet,
+    body.fa-print-caderneta .fa-letterhead-sheet * {
+        visibility: visible !important;
+    }
+
+    body.fa-print-caderneta .fa-letterhead-sheet {
+        position: relative !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* Seleção de turma e aluno no painel do professor */
+.fa-selection-page {
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.fa-selection-card {
+    width: 100%;
+    padding: 22px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.fa-selection-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.fa-selection-eyebrow {
+    color: var(--school-accent, #0284c7);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.fa-selection-heading h2 {
+    margin: 5px 0;
+    color: #0f172a;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.fa-selection-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fa-selection-count {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--school-accent, #0284c7) 9%, #fff);
+    color: var(--school-accent, #0284c7);
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.fa-selection-field {
+    display: flex;
+    max-width: 560px;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.fa-selection-field label {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.fa-selection-select {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    color: #1e293b;
+    font: inherit;
+    font-size: 13px;
+}
+
+.fa-selection-select:focus {
+    border-color: var(--school-accent, #0284c7);
+    outline: 3px solid color-mix(in srgb, var(--school-accent, #0284c7) 16%, transparent);
+}
+
+.fa-selection-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 22px 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8edf2;
+}
+
+.fa-selection-list-heading h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.fa-selection-list-heading span {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.fa-student-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 10px;
+}
+
+.fa-student-selection-card {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    border: 1px solid #e5eaf0;
+    border-radius: 9px;
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.fa-student-selection-card:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--school-accent, #0284c7) 38%, #e2e8f0);
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.06);
+}
+
+.fa-student-selection-avatar {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    place-items: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--school-accent, #0284c7) 12%, #fff);
+    color: var(--school-accent, #0284c7);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.fa-student-selection-info {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.fa-student-selection-info strong {
+    overflow: hidden;
+    color: #1e293b;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fa-student-selection-info span {
+    color: #64748b;
+    font-size: 10px;
+}
+
+.fa-student-selection-info code {
+    overflow: hidden;
+    color: #475569;
+    font-size: 10px;
+    text-overflow: ellipsis;
+}
+
+.fa-student-selection-action {
+    flex-shrink: 0;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--school-accent, #0284c7);
+    border-radius: 7px;
+    background: var(--school-accent, #0284c7);
+    color: #fff;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.fa-student-selection-action:hover {
+    filter: brightness(0.94);
+    transform: translateY(-1px);
+}
+
+.fa-selection-state {
+    display: flex;
+    min-height: 110px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 9px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+}
+
+.fa-selection-state p {
+    margin: 0;
+}
+
+.fa-selection-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 11px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #991b1b;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .fa-selection-card {
+        padding: 16px;
+    }
+
+    .fa-selection-heading {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fa-student-selection-card {
+        flex-wrap: wrap;
+    }
+
+    .fa-student-selection-action {
+        flex: 1 1 100%;
+    }
+}

@@ -1,0 +1,615 @@
+/* ==========================================================================
+   Design Tesouraria A3 - Recibos e Livro-Razão Contabilístico
+   ========================================================================== */
+
+.recibos-page {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background-color: #f8fafc;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0f172a;
+  min-height: calc(100vh - 70px);
+}
+
+.recibos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.recibos-header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0 0 4px 0;
+}
+
+.recibos-header p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.recibos-actions-top {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recibos-new-button, .recibos-print-button {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.recibos-new-button:hover, .recibos-print-button:hover { background: #1e40af; }
+.recibos-print-button { background: #059669; }
+.recibos-print-button:hover { background: #047857; }
+
+.recibos-alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+/* Barra de Ferramentas / Filtros */
+.recibos-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.recibos-search {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 12px;
+}
+
+.recibos-search input {
+  width: 100%;
+  height: 38px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.recibos-toolbar select {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.recibos-refresh {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #cbd5e1;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+}
+
+.recibos-refresh:hover { background: #e2e8f0; }
+
+/* Tabela Contabilística */
+.recibos-table-wrap {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.recibos-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.recibos-table th {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #334155;
+  white-space: nowrap;
+}
+
+.recibos-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.recibos-table tr:hover td { background: #f8fafc; }
+
+.recibos-empty {
+  text-align: center;
+  padding: 32px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Badges e Cores de Transação */
+.recibos-status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.recibos-status.aprovado { background: #ecfdf5; color: #059669; }
+.recibos-status.pendente_aprovacao { background: #fef3c7; color: #d97706; }
+.recibos-status.flagged { background: #fef2f2; color: #dc2626; }
+.recibos-status.entrada { background: #eff6ff; color: #1d4ed8; }
+.recibos-status.saida { background: #fef2f2; color: #b91c1c; }
+
+.recibos-view-button {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e3a8a;
+}
+
+.recibos-view-button:hover { background: #e2e8f0; }
+
+/* Modais */
+.recibos-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.recibos-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.recibos-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.recibos-close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.recibos-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.recibos-details dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.recibos-details dd {
+  margin: 2px 0 10px 0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.recibos-detail-wide {
+  grid-column: span 2;
+}
+
+.recibos-proof img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  margin-top: 8px;
+}
+
+/* Impressão Estilo Contabilista */
+@media print {
+  body * { visibility: hidden; }
+  .recibos-table-wrap, .recibos-table-wrap * { visibility: visible; }
+  .recibos-table-wrap { position: absolute; left: 0; top: 0; width: 100%; border: none; box-shadow: none; }
+  .recibos-view-button, .recibos-toolbar, .recibos-header { display: none !important; }
+}
+
+
+.recibos-page {
+    padding: 24px;
+    color: #0f172a;
+    background: #f8fafc;
+    border-radius: 16px;
+}
+
+.recibos-header,
+.recibos-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.recibos-header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.recibos-header p {
+    margin: 6px 0 0;
+    color: #64748b;
+}
+
+.recibos-new-button,
+.recibos-refresh,
+.recibos-view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.recibos-new-button {
+    flex-shrink: 0;
+    color: #fff;
+    background: #0369a1;
+}
+
+.recibos-refresh {
+    color: #334155;
+    background: #e2e8f0;
+}
+
+.recibos-refresh:disabled {
+    cursor: wait;
+    opacity: .6;
+}
+
+.recibos-toolbar {
+    justify-content: flex-start;
+}
+
+.recibos-toolbar select,
+.recibos-search {
+    height: 42px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.recibos-toolbar select {
+    min-width: 210px;
+    padding: 0 12px;
+}
+
+.recibos-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 560px;
+    padding: 0 12px;
+    color: #64748b;
+}
+
+.recibos-search input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+}
+
+.recibos-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.recibos-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+}
+
+.recibos-table th,
+.recibos-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    white-space: nowrap;
+}
+
+.recibos-table th {
+    color: #475569;
+    background: #f8fafc;
+}
+
+.recibos-table td strong,
+.recibos-table td small {
+    display: block;
+}
+
+.recibos-table td small {
+    margin-top: 4px;
+    color: #64748b;
+}
+
+.recibos-status {
+    display: inline-block;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #854d0e;
+    background: #fef9c3;
+    font-weight: 700;
+}
+
+.recibos-status.aprovado {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.recibos-status.flagged {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.recibos-view-button {
+    color: #075985;
+    background: #e0f2fe;
+}
+
+.recibos-empty {
+    padding: 28px !important;
+    color: #64748b;
+    text-align: center;
+}
+
+.recibos-alert {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.recibos-modal-backdrop {
+    position: fixed;
+    z-index: 1200;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgb(15 23 42 / 55%);
+}
+
+.recibos-modal {
+    width: min(760px, 100%);
+    max-height: min(85vh, 760px);
+    overflow-y: auto;
+    padding: 22px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgb(15 23 42 / 25%);
+}
+
+.recibos-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.recibos-modal-header h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.recibos-close-button {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    color: #334155;
+    background: #f1f5f9;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.recibos-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+}
+
+.recibos-details > div {
+    min-width: 0;
+}
+
+.recibos-details dt {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.recibos-details dd {
+    margin: 4px 0 0;
+    overflow-wrap: anywhere;
+    font-weight: 600;
+}
+
+.recibos-detail-wide {
+    grid-column: 1 / -1;
+}
+
+.recibos-proof img {
+    display: block;
+    max-width: 100%;
+    max-height: 55vh;
+    margin-top: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.recibos-proof a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #0369a1;
+    font-weight: 600;
+}
+
+.recibos-proof-error {
+    margin: 8px 0 0;
+    color: #b91c1c;
+    font-weight: 500;
+}
+
+.recibos-proof-success {
+    margin: 8px 0 0;
+    color: #166534;
+    font-weight: 600;
+}
+
+.recibos-proof-upload {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.recibos-proof-upload label {
+    display: grid;
+    gap: 6px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.recibos-proof-upload input {
+    max-width: 100%;
+    font-weight: 400;
+}
+
+.recibos-proof-upload button {
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #fff;
+    background: #0369a1;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.recibos-proof-upload button:disabled {
+    cursor: not-allowed;
+    opacity: .55;
+}
+
+@media (max-width: 700px) {
+    .recibos-page {
+        padding: 16px;
+    }
+
+    .recibos-header,
+    .recibos-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .recibos-toolbar select,
+    .recibos-search {
+        width: 100%;
+        max-width: none;
+        box-sizing: border-box;
+    }
+
+    .recibos-details {
+        grid-template-columns: 1fr;
+    }
+
+    .recibos-detail-wide {
+        grid-column: auto;
+    }
+}

@@ -1,0 +1,273 @@
+.partilha-page {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  color: #172033;
+}
+
+.partilha-header,
+.partilha-lista-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.partilha-eyebrow {
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.partilha-header h1 {
+  margin: 4px 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.partilha-header p,
+.partilha-nota-privado {
+  color: #64748b;
+}
+
+.partilha-header p {
+  margin: 0;
+}
+
+.partilha-refresh,
+.partilha-submit,
+.partilha-abrir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.partilha-refresh,
+.partilha-abrir {
+  padding: 9px 12px;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.partilha-submit {
+  width: fit-content;
+  padding: 11px 16px;
+  color: #fff;
+  background: #1d4ed8;
+}
+
+.partilha-refresh:disabled,
+.partilha-submit:disabled,
+.partilha-abrir:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.partilha-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 14px rgb(15 23 42 / 4%);
+}
+
+.partilha-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.partilha-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.partilha-form > label,
+.partilha-escola {
+  display: grid;
+  gap: 7px;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.partilha-form input:not([type="checkbox"]),
+.partilha-form select,
+.partilha-form textarea,
+.partilha-escola select,
+.partilha-busca input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  color: #172033;
+  background: #fff;
+  font: inherit;
+}
+
+.partilha-form textarea {
+  resize: vertical;
+}
+
+.partilha-form small {
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.partilha-destinatarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+}
+
+.partilha-destinatarios legend {
+  padding: 0 5px;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.partilha-destinatarios label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.partilha-nota-privado {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0 0;
+  font-size: 0.83rem;
+}
+
+.partilha-escola {
+  max-width: 560px;
+}
+
+.partilha-mensagem {
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.partilha-mensagem.erro {
+  color: #991b1b;
+  background: #fef2f2;
+}
+
+.partilha-mensagem.sucesso {
+  color: #166534;
+  background: #f0fdf4;
+}
+
+.partilha-lista-header h2 {
+  margin-bottom: 0;
+}
+
+.partilha-busca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(320px, 100%);
+  color: #64748b;
+}
+
+.partilha-tabela-wrap {
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.partilha-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.partilha-tabela th,
+.partilha-tabela td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.partilha-tabela th {
+  color: #64748b;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.partilha-tabela td:first-child {
+  min-width: 240px;
+}
+
+.partilha-tabela td:first-child span,
+.partilha-tabela td:first-child small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.partilha-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 250px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+}
+
+.partilha-badge.publico {
+  color: #166534;
+  background: #f0fdf4;
+}
+
+.partilha-badge.privado {
+  color: #1e40af;
+  background: #eff6ff;
+}
+
+.partilha-vazio,
+.partilha-status {
+  padding: 22px;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .partilha-page {
+    padding: 16px;
+  }
+
+  .partilha-header,
+  .partilha-lista-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .partilha-form {
+    grid-template-columns: 1fr;
+  }
+}

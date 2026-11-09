@@ -1,0 +1,139 @@
+.teacher-settings-page {
+  --owner-accent: #087fbd;
+  --owner-accent-dark: #075f91;
+  width: 100%;
+}
+
+.teacher-settings-profile-layout {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.75fr) minmax(0, 2fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.teacher-settings-profile-card {
+  padding: 24px 18px;
+  border: 1px solid var(--owner-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(20, 44, 71, 0.045);
+  text-align: center;
+}
+
+.teacher-settings-profile-card h3 {
+  margin: 0 0 5px;
+  color: #1c2e44;
+  font-size: 16px;
+}
+
+.teacher-settings-account-card {
+  min-width: 0;
+}
+
+.teacher-settings-account-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.teacher-settings-account-grid > div {
+  min-width: 0;
+}
+
+.teacher-settings-account-grid strong,
+.teacher-settings-account-grid code {
+  overflow-wrap: anywhere;
+}
+
+.teacher-settings-status-active {
+  color: #168052 !important;
+}
+
+.teacher-settings-status-inactive {
+  color: #a33430 !important;
+}
+
+.teacher-settings-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.teacher-settings-lists > div {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #e8edf2;
+  border-radius: 12px;
+  background: #fbfcfd;
+}
+
+.teacher-settings-lists h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: #34465b;
+  font-size: 12px;
+}
+
+.teacher-settings-lists ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: #526579;
+  font-size: 11px;
+}
+
+.teacher-settings-lists p {
+  margin: 0;
+  color: #748499;
+  font-size: 11px;
+}
+
+.teacher-settings-scale-note {
+  margin: 0 0 15px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.teacher-settings-security {
+  width: 100%;
+}
+
+.teacher-settings-password-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 720px;
+}
+
+.teacher-settings-password-form .configuracao-form-actions {
+  grid-column: 1 / -1;
+}
+
+.teacher-settings-password-form input {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .teacher-settings-profile-layout {
+    grid-template-columns: minmax(180px, 0.65fr) minmax(0, 1.5fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .teacher-settings-profile-layout,
+  .teacher-settings-lists,
+  .teacher-settings-password-form {
+    grid-template-columns: 1fr;
+  }
+
+  .teacher-settings-password-form .configuracao-form-actions {
+    grid-column: auto;
+  }
+
+  .teacher-settings-account-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

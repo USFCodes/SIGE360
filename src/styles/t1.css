@@ -1,0 +1,2309 @@
+/* ==========================================================================
+   Design Tesouraria A3 - Contabilidade & Movimentos
+   ========================================================================== */
+
+.tesouraria-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background-color: #f8fafc;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Topo Branco Executivo */
+.tesouraria-header-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.tesouraria-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.tesouraria-title h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0 0 4px 0;
+}
+
+.tesouraria-title p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Botões de Fecho e Impressão */
+.tesouraria-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-fechar-caixa {
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reabrir-caixa {
+  background: #059669;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-imprimir-balanco {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Cartões de Resumo do Topo */
+.tesouraria-resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.resumo-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.resumo-card span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.resumo-card .valor {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.valor-entrada { color: #059669; }
+.valor-saida { color: #dc2626; }
+.valor-balanco { color: #1e3a8a; }
+
+/* Sistema de Abas (Tabs) */
+.tesouraria-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+.tab-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.entrada-tab.active {
+  background: #eff6ff;
+  color: #1e40af;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.15);
+}
+
+.tab-btn.saida-tab.active {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #ef4444;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.15);
+}
+
+/* Layout de Duas Colunas (Formulário à Esquerda, Lista à Direita) */
+.tesouraria-content-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .tesouraria-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tesouraria-form-card,
+.tesouraria-list-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.card-title-entrada {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #eff6ff;
+  padding-bottom: 8px;
+}
+
+.card-title-saida {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #991b1b;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #fef2f2;
+  padding-bottom: 8px;
+}
+
+/* Campos de Formulário */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn-submit-entrada {
+  width: 100%;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.btn-submit-entrada:hover { background: #1d4ed8; }
+
+.btn-submit-saida {
+  width: 100%;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.btn-submit-saida:hover { background: #b91c1c; }
+
+/* Tabela de Listagem Estilo Contabilista */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contabil-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.contabil-table th {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 10px 12px;
+  font-weight: 600;
+  border: 1px solid #334155;
+}
+
+.contabil-table td {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+.contabil-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.msg-alerta {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.msg-erro { background: #fee2e2; color: #b91c1c; }
+.msg-sucesso { background: #dcfce7; color: #166534; }
+
+.tesouraria-container {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: clamp(16px, 2.4vw, 32px);
+  color: #172033;
+  background: #f4f7fb;
+}
+
+.tesouraria-header-card {
+  padding: 26px 28px;
+  border-color: #e4eaf2;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .045);
+}
+
+.tesouraria-header-top {
+  border: 0;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.tesouraria-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.tesouraria-title h1 {
+  color: #14213d;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  letter-spacing: -.035em;
+}
+
+.tesouraria-title p,
+.tesouraria-card-heading p,
+.tesouraria-list-heading p {
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.tesouraria-resumo-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.resumo-card {
+  min-width: 0;
+  padding: 16px 18px;
+  border-color: #e8edf4;
+  border-radius: 12px;
+  background: #fbfcfe;
+}
+
+.resumo-card span {
+  color: #667085;
+  font-size: .68rem;
+  letter-spacing: .055em;
+}
+
+.resumo-card .valor {
+  margin-top: 9px;
+  overflow-wrap: anywhere;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  letter-spacing: -.025em;
+}
+
+.tesouraria-tabs {
+  gap: 8px;
+  border-bottom: 1px solid #e1e7ef;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #526074;
+  border-color: transparent;
+  background: transparent;
+  font-size: .9rem;
+}
+
+.tab-btn.entrada-tab.active {
+  color: #087c62;
+  border-color: #cceee4;
+  background: #eaf8f3;
+  box-shadow: none;
+}
+
+.tab-btn.saida-tab.active {
+  color: #bd4141;
+  border-color: #f5d6d6;
+  background: #fff1f1;
+  box-shadow: none;
+}
+
+.tesouraria-content-grid {
+  grid-template-columns: minmax(320px, 400px) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.tesouraria-form-card,
+.tesouraria-list-card {
+  min-width: 0;
+  padding: 22px;
+  border-color: #e4eaf2;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, .035);
+}
+
+.tesouraria-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.tesouraria-heading-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 11px;
+  font-size: 1.1rem;
+}
+
+.tesouraria-heading-icon.entrada {
+  color: #087c62;
+  background: #e8f7f1;
+}
+
+.tesouraria-heading-icon.saida {
+  color: #bd4141;
+  background: #fff0ef;
+}
+
+.tesouraria-card-heading h2,
+.tesouraria-list-heading h2 {
+  margin: 1px 0 4px;
+  padding: 0;
+  border: 0;
+  font-size: 1.02rem;
+}
+
+.tesouraria-card-heading p,
+.tesouraria-list-heading p {
+  margin: 0;
+  font-size: .82rem;
+}
+
+.card-title-entrada { color: #087c62; }
+.card-title-saida { color: #bd4141; }
+
+.tesouraria-select-row,
+.tesouraria-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.form-group label {
+  color: #48566b;
+  font-size: .69rem;
+  letter-spacing: .035em;
+}
+
+.form-input,
+.form-select {
+  height: 42px;
+  border-color: #d7dee9;
+  border-radius: 8px;
+  color: #172033;
+  font-size: .88rem;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #4093d0;
+  box-shadow: 0 0 0 3px rgba(64, 147, 208, .12);
+}
+
+.btn-submit-entrada,
+.btn-submit-saida {
+  min-height: 44px;
+  border-radius: 9px;
+}
+
+.btn-submit-entrada { background: #087c62; }
+.btn-submit-entrada:hover { background: #066a54; }
+.btn-submit-saida { background: #c44646; }
+.btn-submit-saida:hover { background: #ae3838; }
+
+.btn-submit-entrada:disabled,
+.btn-submit-saida:disabled {
+  cursor: not-allowed;
+  opacity: .58;
+}
+
+.tesouraria-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.tesouraria-count {
+  display: grid;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  place-items: center;
+  border: 1px solid #e3e9f1;
+  border-radius: 999px;
+  color: #44536a;
+  background: #f7f9fc;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.contabil-table {
+  min-width: 720px;
+  font-size: .81rem;
+}
+
+.contabil-table th {
+  padding: 12px 11px;
+  border: 0;
+  color: #627087;
+  background: #f6f8fb;
+  font-size: .67rem;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.contabil-table th:first-child { border-radius: 8px 0 0 8px; }
+.contabil-table th:last-child { border-radius: 0 8px 8px 0; }
+
+.contabil-table td {
+  padding: 13px 11px;
+  border: 0;
+  border-bottom: 1px solid #edf0f5;
+  color: #46546a;
+}
+
+.contabil-table tr:nth-child(even) { background: transparent; }
+.contabil-table tbody tr:hover { background: #f8fafc; }
+
+.contabil-table code {
+  color: #43536b;
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.tesouraria-amount-cell {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 750;
+}
+
+.tesouraria-amount-cell.entrada { color: #087c62; }
+.tesouraria-amount-cell.saida { color: #bd4141; }
+
+.tesouraria-print-row {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid #e1e7ef;
+  border-radius: 8px;
+  color: #52627a;
+  background: #fff;
+  cursor: pointer;
+}
+
+.tesouraria-print-row:hover,
+.tesouraria-recibo-action:hover {
+  color: #075985;
+  background: #eff8ff;
+}
+
+.tesouraria-empty {
+  height: 120px;
+  color: #738096 !important;
+  text-align: center;
+}
+
+.msg-alerta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid transparent;
+}
+
+.msg-erro { border-color: #fecaca; }
+.msg-sucesso { border-color: #bbf7d0; }
+
+.tesouraria-recibo-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid #cfe7d7;
+  border-radius: 8px;
+  color: #166534;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tesouraria-caixa-nota {
+  margin: 10px 0 0;
+  color: #b91c1c;
+  font-size: .8rem;
+  text-align: center;
+}
+
+.tesouraria-recibo-impressao { display: none; }
+
+@media (max-width: 1080px) {
+  .tesouraria-content-grid { grid-template-columns: 1fr; }
+  .tesouraria-resumo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .tesouraria-container { padding: 12px; }
+  .tesouraria-header-card,
+  .tesouraria-form-card,
+  .tesouraria-list-card { padding: 16px; }
+  .tesouraria-header-top { align-items: flex-start; }
+  .tesouraria-actions { width: 100%; }
+  .tesouraria-actions button { width: 100%; }
+  .tesouraria-resumo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .resumo-card { padding: 12px; }
+  .resumo-card span { font-size: .6rem; }
+  .resumo-card .valor { font-size: .95rem; }
+  .tesouraria-tabs { gap: 4px; }
+  .tab-btn { flex: 1; justify-content: center; padding: 10px 8px; font-size: .78rem; }
+  .tesouraria-select-row,
+  .tesouraria-form-row { grid-template-columns: 1fr; gap: 0; }
+  .msg-alerta { align-items: flex-start; flex-direction: column; }
+}
+
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 4mm;
+  }
+
+  html,
+  body {
+    width: 80mm !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body * { visibility: hidden !important; }
+
+  .tesouraria-recibo-impressao,
+  .tesouraria-recibo-impressao * {
+    visibility: visible !important;
+  }
+
+  .tesouraria-recibo-impressao {
+    position: absolute;
+    inset: 0 auto auto 0;
+    display: block !important;
+    width: 72mm;
+    padding: 2mm 1mm;
+    color: #111827 !important;
+    background: #fff !important;
+    font: 10px/1.45 Arial, sans-serif;
+  }
+
+  .tesouraria-recibo-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    color: #111827;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .tesouraria-recibo-brand strong {
+    max-width: 54mm;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+    letter-spacing: .08em;
+  }
+
+  .tesouraria-recibo-timestamp {
+    margin: 0 0 8px;
+    color: #64748b;
+    font-size: 8px;
+  }
+
+  .tesouraria-recibo-brand span {
+    align-self: center;
+    font-size: 8px;
+    letter-spacing: .12em;
+  }
+
+  .tesouraria-recibo-rule {
+    margin: 9px 0;
+    border-top: 1px dashed #64748b;
+  }
+
+  .tesouraria-recibo-impressao h2 {
+    margin: 10px 0 2px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .tesouraria-recibo-referencia {
+    margin: 0 0 12px;
+    color: #475569;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .tesouraria-recibo-impressao dl { margin: 0; }
+
+  .tesouraria-recibo-impressao dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px dotted #d1d5db;
+  }
+
+  .tesouraria-recibo-impressao dt { color: #64748b; }
+  .tesouraria-recibo-impressao dd { margin: 0; font-weight: 600; text-align: right; }
+
+  .tesouraria-recibo-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 12px 0;
+    padding: 9px 0;
+    border-top: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+  }
+
+  .tesouraria-recibo-total strong { font-size: 12px; }
+  .tesouraria-recibo-nota { margin: 8px 0; overflow-wrap: anywhere; }
+  .tesouraria-recibo-footer { margin: 9px 0 24px; color: #475569; font-size: 8px; text-align: center; }
+  .tesouraria-recibo-signature { padding-top: 4px; border-top: 1px solid #94a3b8; color: #64748b; font-size: 8px; text-align: center; }
+  .tesouraria-recibo-screen-action { display: none; }
+}
+
+.tesouraria-dia-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 20px 24px;
+  background: #f1f5f9;
+}
+
+.tesouraria-dia-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 14px;
+  padding: 13px 17px;
+  border: 1px solid #dce5ed;
+  border-left: 4px solid #0f766e;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.tesouraria-dia-kicker {
+  color: #0f766e;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.tesouraria-dia-intro h1 {
+  margin: 3px 0 2px;
+  color: #1e293b;
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -.025em;
+}
+
+.tesouraria-dia-intro p {
+  margin: 0;
+  color: #64748b;
+  font-size: .78rem;
+}
+
+.tesouraria-hoje-badge {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid #d8e6e5;
+  border-radius: 7px;
+  color: #115e59;
+  background: #f0fdfa;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.tesouraria-dia-page .tesouraria-resumo-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.tesouraria-dia-page .resumo-card {
+  position: relative;
+  padding: 12px 14px;
+  border-color: #e0e7ed;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, .035);
+}
+
+.tesouraria-dia-page .resumo-card::before {
+  position: absolute;
+  inset: 9px auto 9px 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: #94a3b8;
+  content: '';
+}
+
+.tesouraria-dia-page .resumo-card:nth-child(1)::before { background: #0d9488; }
+.tesouraria-dia-page .resumo-card:nth-child(2)::before { background: #e05252; }
+.tesouraria-dia-page .resumo-card:nth-child(3)::before { background: #475569; }
+.tesouraria-dia-page .resumo-card:nth-child(4)::before { background: #7c6ee6; }
+
+.tesouraria-dia-page .resumo-card span {
+  font-size: .61rem;
+  letter-spacing: .07em;
+}
+
+.tesouraria-dia-page .resumo-card .valor {
+  margin-top: 5px;
+  font-size: 1.02rem;
+}
+
+.tesouraria-dia-page .tesouraria-tabs {
+  gap: 5px;
+  margin-bottom: 11px;
+  padding-bottom: 6px;
+}
+
+.tesouraria-dia-page .tab-btn {
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: .8rem;
+}
+
+.tesouraria-dia-page .tesouraria-content-grid {
+  grid-template-columns: minmax(285px, 350px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.tesouraria-dia-page .tesouraria-form-card,
+.tesouraria-dia-page .tesouraria-list-card {
+  padding: 16px;
+  border-color: #e0e7ed;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, .035);
+}
+
+.tesouraria-dia-page .tesouraria-card-heading {
+  gap: 9px;
+  margin-bottom: 15px;
+}
+
+.tesouraria-dia-page .tesouraria-heading-icon {
+  width: 33px;
+  height: 33px;
+  flex-basis: 33px;
+  border-radius: 8px;
+  font-size: .95rem;
+}
+
+.tesouraria-dia-page .tesouraria-card-heading h2,
+.tesouraria-dia-page .tesouraria-list-heading h2 {
+  font-size: .9rem;
+}
+
+.tesouraria-dia-page .tesouraria-card-heading p,
+.tesouraria-dia-page .tesouraria-list-heading p {
+  font-size: .72rem;
+}
+
+.tesouraria-dia-page .form-group {
+  margin-bottom: 10px;
+}
+
+.tesouraria-dia-page .form-group label {
+  margin-bottom: 4px;
+  font-size: .62rem;
+}
+
+.tesouraria-dia-page .form-input,
+.tesouraria-dia-page .form-select {
+  height: 36px;
+  padding: 0 9px;
+  font-size: .8rem;
+}
+
+.tesouraria-dia-page .form-input[readonly] {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+.tesouraria-dia-page .tesouraria-form-row {
+  gap: 8px;
+}
+
+.tesouraria-dia-page .tesouraria-form-row .form-group {
+  min-width: 0;
+}
+
+.tesouraria-dia-page .tesouraria-id-input {
+  color: #0f766e;
+  background: #f0fdfa;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .73rem;
+  font-weight: 700;
+}
+
+.tesouraria-dia-page .btn-submit-entrada,
+.tesouraria-dia-page .btn-submit-saida {
+  min-height: 38px;
+  margin-top: 5px;
+  padding: 9px 12px;
+  font-size: .82rem;
+}
+
+.tesouraria-dia-page .tesouraria-list-heading {
+  margin-bottom: 11px;
+}
+
+.tesouraria-dia-page .tesouraria-count {
+  min-width: 27px;
+  height: 27px;
+  font-size: .72rem;
+}
+
+.tesouraria-dia-page .contabil-table {
+  min-width: 650px;
+  font-size: .73rem;
+}
+
+.tesouraria-dia-page .contabil-table th {
+  padding: 9px 8px;
+  font-size: .59rem;
+}
+
+.tesouraria-dia-page .contabil-table td {
+  padding: 9px 8px;
+}
+
+@media (max-width: 980px) {
+  .tesouraria-dia-page .tesouraria-content-grid {
+    grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .tesouraria-dia-page {
+    padding: 10px 12px 18px;
+  }
+
+  .tesouraria-dia-page .tesouraria-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .tesouraria-dia-page .tesouraria-resumo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tesouraria-dia-intro {
+    align-items: flex-start;
+  }
+
+  .tesouraria-hoje-badge {
+    font-size: .68rem;
+  }
+}
+
+.t1-recibos-page {
+  max-width: 1480px;
+  min-height: calc(100vh - 90px);
+  margin: 0 auto;
+  padding: 22px;
+  color: #172033;
+  background: #f3f6fa;
+}
+
+.t1-recibos-header,
+.t1-recibos-actions,
+.t1-recibos-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.t1-recibos-header {
+  margin-bottom: 16px;
+  padding: 17px 20px;
+  border: 1px solid #dfe6ee;
+  border-left: 4px solid #1e3a8a;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.t1-recibos-kicker {
+  color: #64748b;
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.t1-recibos-header h1 {
+  margin: 4px 0;
+  color: #172554;
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -.025em;
+}
+
+.t1-recibos-header p,
+.t1-recibos-panel-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: .81rem;
+}
+
+.t1-recibos-actions { flex: 0 0 auto; }
+
+.t1-recibos-actions .btn-imprimir-balanco,
+.t1-recibos-new {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #dbe3ec;
+  border-radius: 7px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.t1-recibos-actions .btn-imprimir-balanco {
+  color: #334155;
+  background: #fff;
+}
+
+.t1-recibos-actions .btn-imprimir-balanco:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.t1-recibos-new {
+  color: #fff;
+  border-color: #1e3a8a;
+  background: #1e3a8a;
+}
+
+.t1-recibos-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.t1-recibos-summary-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 15px;
+  border: 1px solid #e0e7ef;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.t1-recibos-summary-card span {
+  color: #64748b;
+  font-size: .63rem;
+  font-weight: 750;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.t1-recibos-summary-card strong {
+  overflow-wrap: anywhere;
+  color: #172554;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.t1-recibos-summary-card .entrada,
+.t1-recibos-total-cell .entrada { color: #087c62; }
+.t1-recibos-summary-card .saida,
+.t1-recibos-total-cell .saida { color: #bd4141; }
+
+.t1-recibos-panel {
+  overflow: hidden;
+  border: 1px solid #dfe6ee;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, .035);
+}
+
+.t1-recibos-panel-heading {
+  padding: 16px 18px 12px;
+}
+
+.t1-recibos-panel-heading h2 {
+  margin: 0 0 4px;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.t1-recibos-panel-heading p { font-size: .74rem; }
+
+.t1-recibos-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(135px, .48fr)) auto;
+  gap: 8px;
+  padding: 0 18px 13px;
+}
+
+.t1-recibos-search {
+  display: flex;
+  min-width: 0;
+  height: 36px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid #d7dee9;
+  border-radius: 7px;
+  color: #738096;
+}
+
+.t1-recibos-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #172033;
+  background: transparent;
+  font-size: .76rem;
+}
+
+.t1-recibos-filters select,
+.t1-recibos-date-range input {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  padding: 0 9px;
+  border: 1px solid #d7dee9;
+  border-radius: 7px;
+  color: #334155;
+  background: #fff;
+  font-size: .75rem;
+}
+
+.t1-recibos-refresh {
+  padding: 0 12px;
+  border: 1px solid #d7dee9;
+  border-radius: 7px;
+  color: #334155;
+  background: #f8fafc;
+  font-size: .75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.t1-recibos-refresh:disabled { cursor: wait; opacity: .6; }
+
+.t1-recibos-date-range {
+  display: flex;
+  gap: 10px;
+  padding: 0 18px 13px;
+}
+
+.t1-recibos-date-range label {
+  display: grid;
+  width: min(220px, 50%);
+  gap: 4px;
+  color: #64748b;
+  font-size: .66rem;
+  font-weight: 700;
+}
+
+.t1-recibos-table-wrap { width: 100%; overflow-x: auto; }
+
+.t1-recibos-table {
+  width: 100%;
+  min-width: 930px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: .76rem;
+}
+
+.t1-recibos-table thead { background: #f3f6fa; }
+
+.t1-recibos-table th {
+  padding: 10px 11px;
+  border-top: 1px solid #e4e9f0;
+  border-bottom: 1px solid #e4e9f0;
+  color: #64748b;
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.t1-recibos-table td {
+  padding: 11px;
+  border-bottom: 1px solid #edf1f5;
+  color: #475569;
+  vertical-align: middle;
+}
+
+.t1-recibos-table tbody tr:hover { background: #f8fafc; }
+
+.t1-recibos-table td strong {
+  display: block;
+  max-width: 220px;
+  overflow: hidden;
+  color: #273449;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.t1-recibos-table td small {
+  display: block;
+  margin-top: 3px;
+  color: #78869a;
+  font-size: .66rem;
+}
+
+.t1-recibos-table code {
+  color: #334155;
+  font-size: .7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.t1-recibos-type,
+.t1-recibos-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  font-size: .65rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.t1-recibos-type.entrada,
+.t1-recibos-state.aprovado {
+  color: #087c62;
+  background: #e8f7f1;
+}
+
+.t1-recibos-type.saida,
+.t1-recibos-state.flagged {
+  color: #bd4141;
+  background: #fff0ef;
+}
+
+.t1-recibos-state.pendente_aprovacao {
+  color: #9a6700;
+  background: #fff7df;
+}
+
+.t1-recibos-state.registado {
+  color: #334155;
+  background: #eef2f6;
+}
+
+.t1-recibos-number {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 750;
+}
+
+.t1-recibos-number.entrada { color: #087c62; }
+.t1-recibos-number.saida { color: #bd4141; }
+
+.t1-recibos-view,
+.t1-recibos-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border: 1px solid #dce4ed;
+  border-radius: 6px;
+  color: #334155;
+  background: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.t1-recibos-view:hover { color: #1e3a8a; background: #eff6ff; }
+
+.t1-recibos-empty {
+  height: 130px;
+  color: #738096 !important;
+  text-align: center;
+}
+
+.t1-recibos-table tfoot { background: #f8fafc; }
+
+.t1-recibos-table tfoot th {
+  padding: 12px 11px;
+  border-top: 1px solid #dfe6ee;
+  color: #334155;
+  font-size: .68rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.t1-recibos-total-cell span {
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.t1-recibos-overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, .52);
+}
+
+.t1-recibos-modal {
+  width: min(640px, 100%);
+  max-height: min(86vh, 850px);
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, .24);
+}
+
+.t1-recibos-modal-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.t1-recibos-modal-heading span {
+  color: #64748b;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.t1-recibos-modal-heading h2 {
+  margin: 4px 0 0;
+  color: #1e293b;
+  font-size: 1.12rem;
+}
+
+.t1-recibos-modal-heading button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  color: #475569;
+  background: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.t1-recibos-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+.t1-recibos-details dt {
+  color: #64748b;
+  font-size: .65rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.t1-recibos-details dd {
+  margin: 4px 0 0;
+  color: #1e293b;
+  font-size: .84rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.t1-recibos-detail-wide { grid-column: 1 / -1; }
+
+.t1-recibos-proof {
+  margin-top: 19px;
+  padding-top: 15px;
+  border-top: 1px solid #e8edf2;
+}
+
+.t1-recibos-proof h3 {
+  margin: 0 0 9px;
+  color: #334155;
+  font-size: .86rem;
+}
+
+.t1-recibos-proof p,
+.t1-recibos-proof a {
+  color: #52627a;
+  font-size: .78rem;
+}
+
+.t1-recibos-proof label {
+  display: block;
+  margin: 13px 0 5px;
+  color: #52627a;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.t1-recibos-proof input[type="file"] {
+  display: block;
+  max-width: 100%;
+  font-size: .72rem;
+}
+
+.t1-recibos-upload {
+  margin-top: 10px;
+  color: #fff;
+  border-color: #1e3a8a;
+  background: #1e3a8a;
+}
+
+.t1-recibos-upload:disabled { cursor: not-allowed; opacity: .55; }
+
+.t1-recibos-alert,
+.t1-recibos-success {
+  padding: 9px 11px;
+  border-radius: 7px;
+  font-size: .75rem;
+}
+
+.t1-recibos-alert { color: #b91c1c; background: #fee2e2; }
+.t1-recibos-success { color: #166534; background: #dcfce7; }
+
+@media (max-width: 900px) {
+  .t1-recibos-page { padding: 14px; }
+  .t1-recibos-filters { grid-template-columns: 1fr 1fr; }
+  .t1-recibos-search { grid-column: 1 / -1; }
+  .t1-recibos-refresh { min-height: 36px; }
+}
+
+@media (max-width: 600px) {
+  .t1-recibos-header { align-items: flex-start; flex-direction: column; padding: 14px; }
+  .t1-recibos-actions { width: 100%; }
+  .t1-recibos-actions > * { flex: 1; }
+  .t1-recibos-summary { grid-template-columns: 1fr 1fr; }
+  .t1-recibos-summary-card { padding: 10px; }
+  .t1-recibos-summary-card strong { font-size: .88rem; }
+  .t1-recibos-panel-heading { padding: 14px; }
+  .t1-recibos-filters { padding: 0 14px 12px; }
+  .t1-recibos-date-range { padding: 0 14px 12px; }
+  .t1-recibos-details { grid-template-columns: 1fr; }
+  .t1-recibos-detail-wide { grid-column: auto; }
+}
+
+@media print {
+  @page { size: landscape; margin: 12mm; }
+
+  body * { visibility: hidden !important; }
+  .t1-recibos-panel,
+  .t1-recibos-panel * { visibility: visible !important; }
+  .t1-recibos-page {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    background: #fff;
+  }
+  .t1-recibos-header,
+  .t1-recibos-summary,
+  .t1-recibos-filters,
+  .t1-recibos-date-range,
+  .t1-recibos-view { display: none !important; }
+  .t1-recibos-panel { border: 0; box-shadow: none; }
+  .t1-recibos-panel-heading { padding: 0 0 10px; }
+  .t1-recibos-table { min-width: 0; font-size: 9pt; }
+  .t1-recibos-table th,
+  .t1-recibos-table td { padding: 7px; }
+}
+
+.t1-caixa-page {
+  max-width: 1540px;
+}
+
+.t1-caixa-header {
+  border-left-color: #0f766e;
+}
+
+.t1-caixa-status {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.t1-caixa-status.aberto {
+  border-color: #b7e5d4;
+  color: #087c62;
+  background: #e8f7f1;
+}
+
+.t1-caixa-status.fechado {
+  border-color: #f0caca;
+  color: #bd4141;
+  background: #fff0ef;
+}
+
+.t1-recibos-actions .t1-caixa-close,
+.t1-recibos-actions .t1-caixa-open {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid #dbe3ec;
+  border-radius: 7px;
+  color: #334155;
+  background: #fff;
+  font-size: .76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.t1-recibos-actions .t1-caixa-open {
+  border-color: #0f766e;
+  color: #fff;
+  background: #0f766e;
+}
+
+.t1-caixa-panel-heading {
+  align-items: flex-end;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.t1-caixa-tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid #e4e9f0;
+  border-radius: 8px;
+  background: #f6f8fb;
+}
+
+.t1-caixa-tabs button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #64748b;
+  background: transparent;
+  font-size: .73rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.t1-caixa-tabs button span {
+  min-width: 20px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: #e9edf3;
+  text-align: center;
+  font-size: .64rem;
+}
+
+.t1-caixa-tabs button.entrada.active {
+  border-color: #cce9df;
+  color: #087c62;
+  background: #fff;
+}
+
+.t1-caixa-tabs button.saida.active {
+  border-color: #f1d4d2;
+  color: #bd4141;
+  background: #fff;
+}
+
+.t1-caixa-content {
+  display: grid;
+  grid-template-columns: minmax(290px, 350px) minmax(0, 1fr);
+  align-items: start;
+}
+
+.t1-caixa-form {
+  padding: 18px;
+  border-right: 1px solid #edf1f5;
+  background: #fbfcfe;
+}
+
+.t1-caixa-form-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.t1-caixa-form-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 9px;
+  font-size: .95rem;
+}
+
+.t1-caixa-form-icon.entrada {
+  color: #087c62;
+  background: #e8f7f1;
+}
+
+.t1-caixa-form-icon.saida {
+  color: #bd4141;
+  background: #fff0ef;
+}
+
+.t1-caixa-form-heading h3,
+.t1-caixa-table-heading h3 {
+  margin: 0 0 3px;
+  color: #1e293b;
+  font-size: .88rem;
+}
+
+.t1-caixa-form-heading p,
+.t1-caixa-table-heading p {
+  margin: 0;
+  color: #78869a;
+  font-size: .69rem;
+}
+
+.t1-caixa-form form {
+  display: grid;
+  gap: 11px;
+}
+
+.t1-caixa-form .form-group {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.t1-caixa-form .form-group label {
+  color: #475569;
+  font-size: .69rem;
+  font-weight: 700;
+}
+
+.t1-caixa-form .form-input,
+.t1-caixa-form .form-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 9px;
+  border: 1px solid #dbe3ec;
+  border-radius: 6px;
+  color: #334155;
+  background: #fff;
+  font-size: .74rem;
+}
+
+.t1-caixa-form .form-input:focus,
+.t1-caixa-form .form-select:focus {
+  border-color: #5aa99a;
+  outline: 3px solid rgba(15, 118, 110, .1);
+}
+
+.t1-caixa-field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 9px;
+}
+
+.t1-caixa-submit {
+  min-height: 38px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  font-size: .76rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.t1-caixa-submit.entrada { background: #087c62; }
+.t1-caixa-submit.saida { background: #bd4141; }
+.t1-caixa-submit:disabled { cursor: not-allowed; opacity: .55; }
+
+.t1-caixa-closed-note {
+  margin: -4px 0 0;
+  color: #bd4141;
+  font-size: .68rem;
+  text-align: center;
+}
+
+.t1-caixa-table-section { min-width: 0; padding: 18px 0 0; }
+
+.t1-caixa-table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 18px 13px;
+}
+
+.t1-caixa-table-heading > span {
+  display: grid;
+  min-width: 28px;
+  height: 26px;
+  place-items: center;
+  border: 1px solid #e1e7ee;
+  border-radius: 999px;
+  color: #475569;
+  background: #f8fafc;
+  font-size: .68rem;
+  font-weight: 750;
+}
+
+.t1-caixa-table { min-width: 760px; }
+.t1-caixa-table th,
+.t1-caixa-table td { padding-right: 9px; padding-left: 9px; }
+.t1-caixa-table td:nth-child(3) { min-width: 130px; }
+.t1-caixa-table td code { display: inline-block; max-width: 150px; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
+.t1-caixa-table .t1-recibos-number { padding-right: 14px; }
+
+.t1-caixa-print-row {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #dce4ed;
+  border-radius: 6px;
+  color: #475569;
+  background: #fff;
+  cursor: pointer;
+}
+
+.t1-caixa-print-row:hover {
+  border-color: #b8c8dc;
+  color: #1e3a8a;
+  background: #f4f7fb;
+}
+
+@media (max-width: 1050px) {
+  .t1-caixa-content { grid-template-columns: minmax(260px, 310px) minmax(0, 1fr); }
+  .t1-caixa-form { padding: 15px; }
+}
+
+@media (max-width: 780px) {
+  .t1-caixa-content { grid-template-columns: 1fr; }
+  .t1-caixa-form { border-right: 0; border-bottom: 1px solid #edf1f5; }
+  .t1-caixa-field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .t1-caixa-header .t1-recibos-actions { flex-wrap: wrap; }
+  .t1-caixa-header .t1-recibos-actions > * { flex: 1 1 auto; }
+  .t1-caixa-panel-heading { align-items: flex-start; flex-direction: column; }
+  .t1-caixa-tabs { width: 100%; }
+  .t1-caixa-tabs button { flex: 1; }
+  .t1-caixa-table-section { padding-top: 15px; }
+  .t1-caixa-table-heading { padding-right: 14px; padding-left: 14px; }
+}
+
+@media print {
+  body .t1-recibos-panel:not(.t1-demonstrativo-panel),
+  body .t1-recibos-panel:not(.t1-demonstrativo-panel) * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body .tesouraria-recibo-impressao,
+  body .tesouraria-recibo-impressao * {
+    visibility: visible !important;
+  }
+
+  body .tesouraria-recibo-impressao {
+    page: tesouraria-recibo;
+  }
+
+  @page tesouraria-recibo {
+    size: 80mm auto;
+    margin: 0;
+  }
+}
+
+.t1-relatorio-page { max-width: 1540px; }
+.t1-relatorio-header { border-left-color: #1e3a8a; }
+
+.t1-relatorio-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.t1-relatorio-kpi {
+  display: flex;
+  min-width: 0;
+  min-height: 112px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding: 13px 15px;
+  border: 1px solid #e0e7ef;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.t1-relatorio-kpi > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: .64rem;
+  font-weight: 750;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.t1-relatorio-kpi > strong {
+  overflow-wrap: anywhere;
+  color: #172554;
+  font-size: 1rem;
+}
+
+.t1-relatorio-kpi > strong.entrada { color: #087c62; }
+.t1-relatorio-kpi > strong.saida { color: #bd4141; }
+.t1-relatorio-kpi.pendente > strong { color: #9a6700; }
+.t1-relatorio-kpi.saldo { border-left: 3px solid #1e3a8a; }
+
+.t1-relatorio-kpi > small {
+  color: #78869a;
+  font-size: .64rem;
+  line-height: 1.4;
+}
+
+.t1-relatorio-reconciliation {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid #dfe6ee;
+  border-radius: 8px;
+  background: #e8edf3;
+}
+
+.t1-relatorio-reconciliation > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.t1-relatorio-reconciliation span {
+  color: #64748b;
+  font-size: .62rem;
+}
+
+.t1-relatorio-reconciliation strong {
+  overflow-wrap: anywhere;
+  color: #334155;
+  font-size: .75rem;
+}
+
+.t1-relatorio-panel .t1-recibos-panel-heading { padding-bottom: 14px; }
+
+.t1-relatorio-filters {
+  grid-template-columns: repeat(3, minmax(145px, 1fr)) auto;
+}
+
+.t1-relatorio-filters select {
+  min-width: 0;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #dbe3ec;
+  border-radius: 6px;
+  color: #334155;
+  background: #fff;
+  font-size: .73rem;
+}
+
+.t1-relatorio-table { min-width: 1000px; }
+.t1-relatorio-table td small { max-width: 270px; overflow-wrap: anywhere; }
+.t1-relatorio-table tfoot th { white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .t1-relatorio-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .t1-relatorio-reconciliation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .t1-relatorio-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .t1-relatorio-summary { grid-template-columns: 1fr 1fr; }
+  .t1-relatorio-kpi { min-height: 104px; padding: 10px; }
+  .t1-relatorio-kpi > strong { font-size: .86rem; }
+  .t1-relatorio-reconciliation { grid-template-columns: 1fr 1fr; }
+  .t1-relatorio-filters { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .t1-relatorio-page .t1-recibos-header,
+  .t1-relatorio-page .t1-relatorio-summary,
+  .t1-relatorio-page .t1-relatorio-reconciliation {
+    display: grid !important;
+    margin-bottom: 8px;
+    visibility: visible !important;
+  }
+
+  .t1-relatorio-page .t1-recibos-header,
+  .t1-relatorio-page .t1-recibos-header *,
+  .t1-relatorio-page .t1-relatorio-summary,
+  .t1-relatorio-page .t1-relatorio-summary *,
+  .t1-relatorio-page .t1-relatorio-reconciliation,
+  .t1-relatorio-page .t1-relatorio-reconciliation * {
+    visibility: visible !important;
+  }
+
+  .t1-relatorio-page .t1-recibos-header { display: flex !important; }
+  .t1-relatorio-page .t1-recibos-header .t1-recibos-actions,
+  .t1-relatorio-page .t1-relatorio-filters,
+  .t1-relatorio-page .t1-recibos-date-range { display: none !important; }
+  .t1-relatorio-page .t1-relatorio-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .t1-relatorio-page .t1-relatorio-reconciliation { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .t1-relatorio-page .t1-recibos-panel-heading { display: flex !important; }
+  .t1-relatorio-table { min-width: 0; font-size: 8pt; }
+  .t1-relatorio-table th,
+  .t1-relatorio-table td { padding: 5px; }
+}
+
+.t1-demonstrativo-panel { padding: 0 22px 22px; }
+
+.t1-demonstrativo-filtros {
+  grid-template-columns: minmax(210px, 260px) minmax(220px, 300px) 1fr;
+  align-items: end;
+  padding: 18px 0;
+  border-bottom: 1px solid #e8edf3;
+}
+
+.t1-demonstrativo-filtros label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #475569;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.t1-demonstrativo-filtros select {
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #d5deea;
+  border-radius: 7px;
+  color: #1e293b;
+  background: #fff;
+  font: inherit;
+}
+
+.t1-demonstrativo-filtros > p {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.t1-demonstrativo-cabecalho {
+  padding: 28px 12px 22px;
+  text-align: center;
+}
+
+.t1-demonstrativo-cabecalho > strong {
+  color: #172554;
+  font-size: 1.03rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.t1-demonstrativo-cabecalho h2 {
+  margin: 9px 0 5px;
+  color: #1e293b;
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+
+.t1-demonstrativo-cabecalho p {
+  margin: 3px 0;
+  color: #64748b;
+  font-size: .78rem;
+}
+
+.t1-demonstrativo-cabecalho .t1-demonstrativo-data-fecho {
+  margin-top: 8px;
+  color: #334155;
+  font-weight: 700;
+}
+
+.t1-demonstrativo-colunas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.t1-demonstrativo-colunas.atualizando { opacity: .58; }
+
+.t1-demonstrativo-lado {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dfe6ee;
+  border-radius: 8px;
+}
+
+.t1-demonstrativo-lado > header,
+.t1-demonstrativo-lado > footer {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 13px;
+}
+
+.t1-demonstrativo-lado > header {
+  color: #fff;
+  background: #263b63;
+  font-size: .72rem;
+}
+
+.t1-demonstrativo-lado > header span:first-child {
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.t1-demonstrativo-lado > header span:last-child {
+  font-size: .64rem;
+  text-align: right;
+}
+
+.t1-demonstrativo-lado > footer {
+  grid-template-columns: 1fr auto;
+  border-top: 1px solid #dfe6ee;
+  color: #172554;
+  background: #f7f9fc;
+  font-size: .76rem;
+}
+
+.t1-demonstrativo-lado > footer b { font-size: .82rem; }
+.t1-demonstrativo-lado.credito > header { background: #11695d; }
+
+.t1-demonstrativo-corpo { min-height: 100px; }
+
+.t1-demonstrativo-lancamento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding: 11px 13px;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.t1-demonstrativo-lancamento:last-child { border-bottom: 0; }
+.t1-demonstrativo-lancamento > div { min-width: 0; }
+
+.t1-demonstrativo-lancamento strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #334155;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.t1-demonstrativo-lancamento small {
+  display: block;
+  margin-top: 3px;
+  color: #78869a;
+  font-size: .65rem;
+  line-height: 1.4;
+}
+
+.t1-demonstrativo-lancamento > b {
+  color: #334155;
+  font-size: .74rem;
+  white-space: nowrap;
+}
+
+.t1-demonstrativo-lancamento.saida > b { color: #a63d42; }
+.t1-demonstrativo-lancamento.entrada > b { color: #087c62; }
+.t1-demonstrativo-lancamento.resultado { background: #f3f6fa; }
+.t1-demonstrativo-lancamento.resultado > b { color: #172554; }
+
+.t1-demonstrativo-estado {
+  display: inline-flex;
+  margin-top: 5px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  color: #475569;
+  background: #eef2f7;
+  font-size: .59rem;
+  font-weight: 750;
+}
+
+.t1-demonstrativo-estado.aprovado,
+.t1-demonstrativo-estado.registado { color: #166534; background: #dcfce7; }
+.t1-demonstrativo-estado.pendente_aprovacao { color: #8a5a00; background: #fff3cd; }
+.t1-demonstrativo-estado.flagged { color: #9f3434; background: #fee2e2; }
+
+.t1-demonstrativo-vazio {
+  margin: 0;
+  padding: 20px 13px;
+  color: #78869a;
+  font-size: .72rem;
+  text-align: center;
+}
+
+.t1-demonstrativo-pendentes {
+  margin-top: 17px;
+  border: 1px solid #e5e1d4;
+  border-radius: 8px;
+  background: #fffdf7;
+}
+
+.t1-demonstrativo-pendentes > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee9dc;
+}
+
+.t1-demonstrativo-pendentes h3 {
+  margin: 0;
+  color: #59491e;
+  font-size: .78rem;
+}
+
+.t1-demonstrativo-pendentes header p {
+  margin: 3px 0 0;
+  color: #817654;
+  font-size: .66rem;
+}
+
+.t1-demonstrativo-pendentes > header > strong {
+  color: #795b15;
+  font-size: .78rem;
+  white-space: nowrap;
+}
+
+.t1-demonstrativo-pendentes-lista .t1-demonstrativo-lancamento { padding-right: 14px; padding-left: 14px; }
+.t1-demonstrativo-pendentes .t1-demonstrativo-vazio { text-align: left; }
+
+.t1-demonstrativo-resultado {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 16px;
+  padding: 14px 15px;
+  border: 1px solid #dfe6ee;
+  border-radius: 8px;
+  background: #f7f9fc;
+}
+
+.t1-demonstrativo-resultado > span {
+  color: #475569;
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.t1-demonstrativo-resultado > strong { font-size: .84rem; }
+.t1-demonstrativo-resultado > strong.entrada { color: #087c62; }
+.t1-demonstrativo-resultado > strong.saida { color: #a63d42; }
+
+.t1-demonstrativo-resultado > small {
+  flex: 1 1 100%;
+  color: #78869a;
+  font-size: .65rem;
+}
+
+.t1-demonstrativo-loading {
+  padding: 8px 0;
+  color: #64748b;
+  font-size: .68rem;
+  text-align: center;
+}
+
+.t1-demonstrativo-sem-ano {
+  margin: 18px 0 0;
+  padding: 18px;
+}
+
+@media (max-width: 800px) {
+  .t1-demonstrativo-filtros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .t1-demonstrativo-filtros > p { grid-column: 1 / -1; }
+  .t1-demonstrativo-colunas { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .t1-demonstrativo-panel { padding: 0 13px 15px; }
+  .t1-demonstrativo-filtros { grid-template-columns: 1fr; }
+  .t1-demonstrativo-filtros > p { grid-column: auto; }
+  .t1-demonstrativo-cabecalho { padding: 22px 5px 17px; }
+  .t1-demonstrativo-cabecalho h2 { font-size: 1rem; }
+  .t1-demonstrativo-lado > header,
+  .t1-demonstrativo-lado > footer { padding-right: 10px; padding-left: 10px; }
+  .t1-demonstrativo-lancamento { padding-right: 10px; padding-left: 10px; }
+}
+
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+
+  body * { visibility: hidden !important; }
+  body .t1-relatorio-page,
+  body .t1-relatorio-page * { visibility: visible !important; }
+  body .t1-relatorio-page {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+  }
+  body .t1-relatorio-page .t1-recibos-header,
+  body .t1-relatorio-page .t1-recibos-panel {
+    display: block !important;
+    border: 0;
+    box-shadow: none;
+  }
+  body .t1-relatorio-page .t1-recibos-header {
+    margin: 0 0 12px;
+    padding: 0;
+  }
+  body .t1-relatorio-page .t1-recibos-header > div:first-child { display: none; }
+  body .t1-relatorio-page .t1-recibos-actions,
+  body .t1-relatorio-page .t1-demonstrativo-filtros,
+  body .t1-relatorio-page .t1-demonstrativo-loading { display: none !important; }
+  body .t1-relatorio-page .t1-demonstrativo-panel { padding: 0; }
+  body .t1-relatorio-page .t1-demonstrativo-cabecalho { padding: 8px 0 16px; }
+  body .t1-relatorio-page .t1-demonstrativo-colunas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  body .t1-relatorio-page .t1-demonstrativo-lado,
+  body .t1-relatorio-page .t1-demonstrativo-pendentes,
+  body .t1-relatorio-page .t1-demonstrativo-resultado { break-inside: avoid; }
+  body .t1-relatorio-page .t1-demonstrativo-lancamento { padding: 7px 8px; }
+  body .t1-relatorio-page .t1-demonstrativo-lancamento strong { font-size: 8pt; }
+  body .t1-relatorio-page .t1-demonstrativo-lancamento small,
+  body .t1-relatorio-page .t1-demonstrativo-estado { font-size: 6.5pt; }
+}
