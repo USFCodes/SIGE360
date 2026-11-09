@@ -1,0 +1,573 @@
+/* ==========================================================================
+   Design A3 CSS - Módulo de Alunos e Matrículas (Excluindo AdminHeader)
+   Paleta Profissional e Moderna (Baseada em Design System A3)
+   ========================================================================== */
+
+:root {
+  --a3-primary: #1e3a8a;
+  --a3-primary-hover: #1e40af;
+  --a3-primary-light: #eff6ff;
+  --a3-accent: #3b82f6;
+  --a3-success: #059669;
+  --a3-success-light: #ecfdf5;
+  --a3-warning: #d97706;
+  --a3-danger: #dc2626;
+  --a3-danger-light: #fef2f2;
+  --a3-bg: #f8fafc;
+  --a3-card-bg: #ffffff;
+  --a3-text: #0f172a;
+  --a3-text-muted: #64748b;
+  --a3-border: #e2e8f0;
+  --a3-border-focus: #3b82f6;
+  --a3-radius: 12px;
+  --a3-radius-sm: 8px;
+  --a3-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --a3-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --a3-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Container Principal (Excluindo AdminHeader) */
+.owner-alunos-page.import-content-wrapper {
+  background-color: var(--a3-bg);
+  color: var(--a3-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  padding: 2rem;
+  min-height: calc(100vh - 70px);
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho do Módulo / Cartões de Título */
+.import-header-card,
+.school-selector-card,
+.manual-entry-card {
+  background-color: var(--a3-card-bg);
+  border: 1px solid var(--a3-border);
+  border-radius: var(--a3-radius);
+  box-shadow: var(--a3-shadow);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  transition: var(--a3-transition);
+}
+
+.import-header-card:hover,
+.school-selector-card:hover,
+.manual-entry-card:hover {
+  box-shadow: var(--a3-shadow-lg);
+}
+
+.import-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.import-title-group h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--a3-primary);
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.025em;
+}
+
+.import-title-group p {
+  font-size: 0.95rem;
+  color: var(--a3-text-muted);
+  margin: 0;
+}
+
+/* Botões Principais e de Ação */
+.btn-download-template,
+.btn-submit-all,
+.btn-modal-confirm {
+  background-color: var(--a3-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--a3-radius-sm);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--a3-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.btn-download-template:hover:not(:disabled),
+.btn-submit-all:hover:not(:disabled),
+.btn-modal-confirm:hover:not(:disabled) {
+  background-color: var(--a3-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-download-template:disabled,
+.btn-submit-all:disabled,
+.btn-modal-confirm:disabled {
+  background-color: var(--a3-border);
+  color: var(--a3-text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-modal-cancel {
+  background-color: transparent;
+  color: var(--a3-text-muted);
+  border: 1px solid var(--a3-border);
+  border-radius: var(--a3-radius-sm);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--a3-transition);
+}
+
+.btn-modal-cancel:hover:not(:disabled) {
+  background-color: var(--a3-border);
+  color: var(--a3-text);
+}
+
+/* Navegação por Abas (Tabs) */
+.import-tabs-nav {
+  display: flex;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--a3-border);
+  padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--a3-text-muted);
+  cursor: pointer;
+  border-radius: var(--a3-radius-sm) var(--a3-radius-sm) 0 0;
+  transition: var(--a3-transition);
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: var(--a3-primary);
+  background-color: var(--a3-primary-light);
+}
+
+.tab-btn.active {
+  color: var(--a3-primary);
+  background-color: var(--a3-primary-light);
+  box-shadow: inset 0 -3px 0 0 var(--a3-primary);
+}
+
+/* Seletores de Escola / Ano / Polo / Turma */
+.school-selector-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  align-items: flex-end;
+  background: linear-gradient(135deg, #ffffff 0%, var(--a3-primary-light) 100%);
+}
+
+.form-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-select-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--a3-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.select-clay,
+.table-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid var(--a3-border);
+  border-radius: var(--a3-radius-sm);
+  font-size: 0.95rem;
+  color: var(--a3-text);
+  outline: none;
+  transition: var(--a3-transition);
+  box-sizing: border-box;
+}
+
+.select-clay:focus,
+.table-input:focus {
+  border-color: var(--a3-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Informações da Escola Selecionada */
+.import-school-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: var(--a3-primary-light);
+  border-left: 4px solid var(--a3-primary);
+}
+
+.import-school-info strong {
+  font-size: 1.05rem;
+  color: var(--a3-primary);
+}
+
+.import-school-info span {
+  font-size: 0.9rem;
+  color: var(--a3-text);
+}
+
+.import-school-info small {
+  font-size: 0.8rem;
+  color: var(--a3-text-muted);
+  font-style: italic;
+}
+
+/* Mensagens de Erro e Sucesso */
+.import-message {
+  padding: 1rem 1.25rem;
+  border-radius: var(--a3-radius-sm);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.import-message-error {
+  background-color: var(--a3-danger-light);
+  color: var(--a3-danger);
+  border: 1px solid #fecaca;
+}
+
+.import-message-success {
+  background-color: var(--a3-success-light);
+  color: var(--a3-success);
+  border: 1px solid #a7f3d0;
+}
+
+/* Dropzone de Ficheiros */
+.dropzone-card {
+  border: 2px dashed var(--a3-border);
+  border-radius: var(--a3-radius);
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--a3-transition);
+}
+
+.dropzone-card:hover,
+.dropzone-card.dragging {
+  border-color: var(--a3-accent);
+  background-color: var(--a3-primary-light);
+}
+
+.dropzone-text h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--a3-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.dropzone-text p {
+  color: var(--a3-text-muted);
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+}
+
+.dropzone-text label {
+  color: var(--a3-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Tabelas e Área de Revisão */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: var(--a3-radius-sm);
+  border: 1px solid var(--a3-border);
+}
+
+.clay-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+}
+
+.clay-table th {
+  background-color: var(--a3-primary-light);
+  color: var(--a3-primary);
+  font-weight: 600;
+  padding: 0.875rem 1rem;
+  border-bottom: 2px solid var(--a3-border);
+  white-space: nowrap;
+}
+
+.clay-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--a3-border);
+  color: var(--a3-text);
+  vertical-align: middle;
+}
+
+.clay-table tr:hover td {
+  background-color: var(--a3-bg);
+}
+
+/* Miniaturas e Badges */
+.manual-student-thumbnail,
+.manual-photo-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--a3-border);
+}
+
+.manual-photo-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--a3-radius-sm);
+  margin-top: 0.5rem;
+}
+
+.badge-status-success {
+  background-color: var(--a3-success-light);
+  color: var(--a3-success);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-status-pending {
+  background-color: #fef3c7;
+  color: var(--a3-warning);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Botões de Ação na Tabela e Linhas */
+.btn-remove-row {
+  background: transparent;
+  color: var(--a3-danger);
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: var(--a3-transition);
+}
+
+.btn-remove-row:hover {
+  background-color: var(--a3-danger-light);
+}
+
+/* Formulário Manual e Grelhas de Campos */
+.manual-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.manual-list-heading h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--a3-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.manual-row-count {
+  background-color: var(--a3-primary-light);
+  color: var(--a3-primary);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.manual-student-row {
+  background-color: var(--a3-bg);
+  border: 1px solid var(--a3-border);
+  border-radius: var(--a3-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.manual-student-row-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--a3-border);
+  padding-bottom: 0.75rem;
+}
+
+.manual-student-row-heading h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--a3-text);
+  margin: 0;
+}
+
+.manual-remove-student {
+  background-color: transparent;
+  color: var(--a3-danger);
+  border: 1px solid #fecaca;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--a3-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--a3-transition);
+}
+
+.manual-remove-student:hover {
+  background-color: var(--a3-danger-light);
+}
+
+.manual-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.manual-checkbox-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.manual-checkbox-control input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--a3-primary);
+  cursor: pointer;
+}
+
+.manual-checkbox-control span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--a3-text);
+}
+
+.manual-photo-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.manual-photo-control small {
+  color: var(--a3-text-muted);
+  font-size: 0.75rem;
+}
+
+.manual-list-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--a3-border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-add-student-row {
+  background-color: transparent;
+  color: var(--a3-accent);
+  border: 1px dashed var(--a3-accent);
+  border-radius: var(--a3-radius-sm);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--a3-transition);
+}
+
+.btn-add-student-row:hover:not(:disabled) {
+  background-color: var(--a3-primary-light);
+}
+
+/* Barra de Progresso e Modais */
+.import-progress {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--a3-border);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--a3-success);
+  transition: width 0.3s ease;
+}
+
+.import-progress p {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--a3-text-muted);
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Responsividade Adaptativa */
+@media (max-width: 768px) {
+  .owner-alunos-page.import-content-wrapper {
+    padding: 1rem;
+  }
+  
+  .import-header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .import-tabs-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .school-selector-card {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,173 @@
+/* ==========================================================
+   ESTILOS DA PAUTA GERAL DA ESCOLA (BROADSHEET) & APROVAÇÃO
+   ========================================================== */
+
+/* Barra de Aprovação da Direção */
+.direcao-aprovacao-bar {
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.direcao-aprovacao-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-tag.aprovado {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-tag.rejeitado {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-tag.pendente {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.direcao-aprovacao-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-dir-aprovar, .btn-dir-rever, .btn-dir-rejeitar {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.btn-dir-aprovar {
+  background: #16a34a;
+  color: #fff;
+}
+
+.btn-dir-rever {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.btn-dir-rejeitar {
+  background: #dc2626;
+  color: #fff;
+}
+
+.btn-dir-aprovar:hover, .btn-dir-rever:hover, .btn-dir-rejeitar:hover {
+  opacity: 0.9;
+}
+
+/* Grelha dos 5 Filtros */
+.direcao-notas-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.filter-label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.search-icon-input {
+  color: #64748b;
+  margin-right: 8px;
+}
+
+.search-input-group input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: #1e293b;
+}
+
+.direcao-notas-counter-bar {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 15px;
+  padding-left: 4px;
+}
+
+/* Distinção de notas positivas e negativas */
+.mf-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.mf-badge.pass {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.mf-badge.fail {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Modais Largos para "Ver Outros" */
+.modal-wide {
+  max-width: 850px !important;
+  width: 95% !important;
+}
+
+.direcao-notas-alert-error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
